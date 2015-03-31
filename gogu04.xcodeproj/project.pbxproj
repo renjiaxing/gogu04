@@ -1,0 +1,427 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A5CD964D1ACAE89C00E11645 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CD964C1ACAE89C00E11645 /* main.m */; };
+		A5CD96501ACAE89C00E11645 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CD964F1ACAE89C00E11645 /* AppDelegate.m */; };
+		A5CD96531ACAE89C00E11645 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CD96521ACAE89C00E11645 /* ViewController.m */; };
+		A5CD96561ACAE89C00E11645 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5CD96541ACAE89C00E11645 /* Main.storyboard */; };
+		A5CD96581ACAE89C00E11645 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5CD96571ACAE89C00E11645 /* Images.xcassets */; };
+		A5CD965B1ACAE89C00E11645 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5CD96591ACAE89C00E11645 /* LaunchScreen.xib */; };
+		A5CD96671ACAE89D00E11645 /* gogu04Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CD96661ACAE89D00E11645 /* gogu04Tests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A5CD96611ACAE89D00E11645 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A5CD963F1ACAE89C00E11645 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A5CD96461ACAE89C00E11645;
+			remoteInfo = gogu04;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		A5CD96471ACAE89C00E11645 /* gogu04.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gogu04.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5CD964B1ACAE89C00E11645 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5CD964C1ACAE89C00E11645 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		A5CD964E1ACAE89C00E11645 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		A5CD964F1ACAE89C00E11645 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A5CD96511ACAE89C00E11645 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		A5CD96521ACAE89C00E11645 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		A5CD96551ACAE89C00E11645 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		A5CD96571ACAE89C00E11645 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		A5CD965A1ACAE89C00E11645 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		A5CD96601ACAE89D00E11645 /* gogu04Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = gogu04Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A5CD96651ACAE89D00E11645 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A5CD96661ACAE89D00E11645 /* gogu04Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gogu04Tests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A5CD96441ACAE89C00E11645 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5CD965D1ACAE89D00E11645 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A5CD963E1ACAE89C00E11645 = {
+			isa = PBXGroup;
+			children = (
+				A5CD96491ACAE89C00E11645 /* gogu04 */,
+				A5CD96631ACAE89D00E11645 /* gogu04Tests */,
+				A5CD96481ACAE89C00E11645 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		A5CD96481ACAE89C00E11645 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A5CD96471ACAE89C00E11645 /* gogu04.app */,
+				A5CD96601ACAE89D00E11645 /* gogu04Tests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A5CD96491ACAE89C00E11645 /* gogu04 */ = {
+			isa = PBXGroup;
+			children = (
+				A5CD964E1ACAE89C00E11645 /* AppDelegate.h */,
+				A5CD964F1ACAE89C00E11645 /* AppDelegate.m */,
+				A5CD96511ACAE89C00E11645 /* ViewController.h */,
+				A5CD96521ACAE89C00E11645 /* ViewController.m */,
+				A5CD96541ACAE89C00E11645 /* Main.storyboard */,
+				A5CD96571ACAE89C00E11645 /* Images.xcassets */,
+				A5CD96591ACAE89C00E11645 /* LaunchScreen.xib */,
+				A5CD964A1ACAE89C00E11645 /* Supporting Files */,
+			);
+			path = gogu04;
+			sourceTree = "<group>";
+		};
+		A5CD964A1ACAE89C00E11645 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A5CD964B1ACAE89C00E11645 /* Info.plist */,
+				A5CD964C1ACAE89C00E11645 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A5CD96631ACAE89D00E11645 /* gogu04Tests */ = {
+			isa = PBXGroup;
+			children = (
+				A5CD96661ACAE89D00E11645 /* gogu04Tests.m */,
+				A5CD96641ACAE89D00E11645 /* Supporting Files */,
+			);
+			path = gogu04Tests;
+			sourceTree = "<group>";
+		};
+		A5CD96641ACAE89D00E11645 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				A5CD96651ACAE89D00E11645 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A5CD96461ACAE89C00E11645 /* gogu04 */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5CD966A1ACAE89D00E11645 /* Build configuration list for PBXNativeTarget "gogu04" */;
+			buildPhases = (
+				A5CD96431ACAE89C00E11645 /* Sources */,
+				A5CD96441ACAE89C00E11645 /* Frameworks */,
+				A5CD96451ACAE89C00E11645 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = gogu04;
+			productName = gogu04;
+			productReference = A5CD96471ACAE89C00E11645 /* gogu04.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A5CD965F1ACAE89D00E11645 /* gogu04Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A5CD966D1ACAE89D00E11645 /* Build configuration list for PBXNativeTarget "gogu04Tests" */;
+			buildPhases = (
+				A5CD965C1ACAE89D00E11645 /* Sources */,
+				A5CD965D1ACAE89D00E11645 /* Frameworks */,
+				A5CD965E1ACAE89D00E11645 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A5CD96621ACAE89D00E11645 /* PBXTargetDependency */,
+			);
+			name = gogu04Tests;
+			productName = gogu04Tests;
+			productReference = A5CD96601ACAE89D00E11645 /* gogu04Tests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A5CD963F1ACAE89C00E11645 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = ren;
+				TargetAttributes = {
+					A5CD96461ACAE89C00E11645 = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					A5CD965F1ACAE89D00E11645 = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = A5CD96461ACAE89C00E11645;
+					};
+				};
+			};
+			buildConfigurationList = A5CD96421ACAE89C00E11645 /* Build configuration list for PBXProject "gogu04" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A5CD963E1ACAE89C00E11645;
+			productRefGroup = A5CD96481ACAE89C00E11645 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A5CD96461ACAE89C00E11645 /* gogu04 */,
+				A5CD965F1ACAE89D00E11645 /* gogu04Tests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A5CD96451ACAE89C00E11645 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5CD96561ACAE89C00E11645 /* Main.storyboard in Resources */,
+				A5CD965B1ACAE89C00E11645 /* LaunchScreen.xib in Resources */,
+				A5CD96581ACAE89C00E11645 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5CD965E1ACAE89D00E11645 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A5CD96431ACAE89C00E11645 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5CD96531ACAE89C00E11645 /* ViewController.m in Sources */,
+				A5CD96501ACAE89C00E11645 /* AppDelegate.m in Sources */,
+				A5CD964D1ACAE89C00E11645 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A5CD965C1ACAE89D00E11645 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A5CD96671ACAE89D00E11645 /* gogu04Tests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A5CD96621ACAE89D00E11645 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A5CD96461ACAE89C00E11645 /* gogu04 */;
+			targetProxy = A5CD96611ACAE89D00E11645 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		A5CD96541ACAE89C00E11645 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5CD96551ACAE89C00E11645 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		A5CD96591ACAE89C00E11645 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A5CD965A1ACAE89C00E11645 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A5CD96681ACAE89D00E11645 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		A5CD96691ACAE89D00E11645 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A5CD966B1ACAE89D00E11645 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = gogu04/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A5CD966C1ACAE89D00E11645 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = gogu04/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		A5CD966E1ACAE89D00E11645 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = gogu04Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/gogu04.app/gogu04";
+			};
+			name = Debug;
+		};
+		A5CD966F1ACAE89D00E11645 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = gogu04Tests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/gogu04.app/gogu04";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A5CD96421ACAE89C00E11645 /* Build configuration list for PBXProject "gogu04" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5CD96681ACAE89D00E11645 /* Debug */,
+				A5CD96691ACAE89D00E11645 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A5CD966A1ACAE89D00E11645 /* Build configuration list for PBXNativeTarget "gogu04" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5CD966B1ACAE89D00E11645 /* Debug */,
+				A5CD966C1ACAE89D00E11645 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		A5CD966D1ACAE89D00E11645 /* Build configuration list for PBXNativeTarget "gogu04Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A5CD966E1ACAE89D00E11645 /* Debug */,
+				A5CD966F1ACAE89D00E11645 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A5CD963F1ACAE89C00E11645 /* Project object */;
+}

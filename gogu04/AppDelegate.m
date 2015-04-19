@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "GGTabBarViewController.h"
+#import "GGLoginViewController.h"
+#import "GoGuTool.h"
+#import "AFNetworking.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +20,45 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    self.window=[[UIWindow alloc] init];
+    self.window.frame=[UIScreen mainScreen].bounds;
+    
+    NSUserDefaults *defaults=[NSUserDefaults standardUserDefaults];
+    NSString *user_id=[defaults objectForKey:@"user_id"];
+    NSString *token=[defaults objectForKey:@"token"];
+    NSLog(@"user_id %@ , token %@",user_id,token);
+    if( !OBJ_IS_NIL(user_id) && !OBJ_IS_NIL(token)){
+        AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+        NSMutableDictionary *param=[NSMutableDictionary dictionary];
+        param[@"uid"]=user_id;
+        param[@"token"]=token;
+        [manager GET:LOGIN_TOKEN_URL parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
+            NSString *result=responseObject[@"result"];
+            if ([result isEqualToString:@"ok"]) {
+                self.window.rootViewController=[[GGTabBarViewController alloc] init];
+            }else{
+                GGLoginViewController *loginVc=[[GGLoginViewController alloc] init];
+                UINavigationController *loginNav=[[UINavigationController alloc] initWithRootViewController:loginVc];
+                self.window.rootViewController=loginNav;
+            }
+//            NSLog(@"JSON: %@", responseObject);
+        } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+            GGLoginViewController *loginVc=[[GGLoginViewController alloc] init];
+            UINavigationController *loginNav=[[UINavigationController alloc] initWithRootViewController:loginVc];
+            self.window.rootViewController=loginNav;
+//            NSLog(@"Error: %@", error);
+        }];
+    }else{
+        GGLoginViewController *loginVc=[[GGLoginViewController alloc] init];
+        UINavigationController *loginNav=[[UINavigationController alloc] initWithRootViewController:loginVc];
+        self.window.rootViewController=loginNav;
+    }
+    
+    
+    
+    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

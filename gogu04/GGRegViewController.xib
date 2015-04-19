@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GGRegViewController">
+            <connections>
+                <outlet property="code" destination="ynB-nw-rdh" id="Rp8-zU-VqJ"/>
+                <outlet property="email" destination="PMG-bi-3c3" id="pTf-0D-r2l"/>
+                <outlet property="passwd" destination="8cz-8Y-yEm" id="Nw8-B4-DI2"/>
+                <outlet property="phone" destination="Lgr-UY-Jqh" id="ejZ-Sh-VOo"/>
+                <outlet property="repeatpwd" destination="xae-f0-1pc" id="vcm-IM-qr6"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="邮箱" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PMG-bi-3c3">
+                    <rect key="frame" x="8" y="89" width="584" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="电话" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Lgr-UY-Jqh">
+                    <rect key="frame" x="8" y="127" width="584" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8cz-8Y-yEm">
+                    <rect key="frame" x="8" y="165" width="584" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="确认密码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xae-f0-1pc">
+                    <rect key="frame" x="8" y="203" width="584" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                </textField>
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="邀请码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ynB-nw-rdh">
+                    <rect key="frame" x="8" y="241" width="584" height="30"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QxE-Go-n6d">
+                    <rect key="frame" x="285" y="279" width="30" height="30"/>
+                    <state key="normal" title="注册">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="reg:" destination="-1" eventType="touchUpInside" id="LT4-Et-As0"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="PMG-bi-3c3" firstAttribute="leading" secondItem="Lgr-UY-Jqh" secondAttribute="leading" id="1qI-dT-WT4"/>
+                <constraint firstItem="xae-f0-1pc" firstAttribute="leading" secondItem="8cz-8Y-yEm" secondAttribute="leading" id="3ii-PN-v0s"/>
+                <constraint firstItem="PMG-bi-3c3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="89" id="BFy-Ig-Arg"/>
+                <constraint firstItem="ynB-nw-rdh" firstAttribute="top" secondItem="xae-f0-1pc" secondAttribute="bottom" constant="8" symbolic="YES" id="FSV-1E-86z"/>
+                <constraint firstItem="ynB-nw-rdh" firstAttribute="trailing" secondItem="xae-f0-1pc" secondAttribute="trailing" id="KC0-kF-58Y"/>
+                <constraint firstItem="ynB-nw-rdh" firstAttribute="leading" secondItem="xae-f0-1pc" secondAttribute="leading" id="MKh-fN-mIg"/>
+                <constraint firstItem="8cz-8Y-yEm" firstAttribute="trailing" secondItem="Lgr-UY-Jqh" secondAttribute="trailing" id="PAS-Rd-Qh4"/>
+                <constraint firstItem="ynB-nw-rdh" firstAttribute="centerX" secondItem="QxE-Go-n6d" secondAttribute="centerX" id="QEX-5y-3uP"/>
+                <constraint firstItem="Lgr-UY-Jqh" firstAttribute="top" secondItem="PMG-bi-3c3" secondAttribute="bottom" constant="8" symbolic="YES" id="VLN-JN-gZC"/>
+                <constraint firstItem="xae-f0-1pc" firstAttribute="top" secondItem="8cz-8Y-yEm" secondAttribute="bottom" constant="8" symbolic="YES" id="Zuo-VD-ktL"/>
+                <constraint firstItem="8cz-8Y-yEm" firstAttribute="leading" secondItem="Lgr-UY-Jqh" secondAttribute="leading" id="dIw-j7-am9"/>
+                <constraint firstItem="ynB-nw-rdh" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" id="gO5-4X-bC4"/>
+                <constraint firstItem="8cz-8Y-yEm" firstAttribute="trailing" secondItem="xae-f0-1pc" secondAttribute="trailing" id="gkR-9n-1kr"/>
+                <constraint firstItem="QxE-Go-n6d" firstAttribute="top" secondItem="ynB-nw-rdh" secondAttribute="bottom" constant="8" symbolic="YES" id="ouW-7F-mEx"/>
+                <constraint firstItem="Lgr-UY-Jqh" firstAttribute="trailing" secondItem="PMG-bi-3c3" secondAttribute="trailing" id="pAb-qC-A94"/>
+                <constraint firstItem="8cz-8Y-yEm" firstAttribute="top" secondItem="Lgr-UY-Jqh" secondAttribute="bottom" constant="8" symbolic="YES" id="wNh-lD-aeb"/>
+                <constraint firstItem="Lgr-UY-Jqh" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="zke-Ne-nuk"/>
+            </constraints>
+        </view>
+    </objects>
+</document>

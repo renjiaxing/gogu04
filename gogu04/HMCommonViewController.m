@@ -67,6 +67,9 @@
     cell.item = group.items[indexPath.row];
     // 设置cell所处的行号 和 所处组的总行数
 //    [cell setIndexPath:indexPath rowsInSection:group.items.count];
+    if ([cell.item.title isEqualToString:@"用户名"]){
+        cell.selectionStyle=UITableViewCellSelectionStyleNone;
+    }
     return cell;
 }
 

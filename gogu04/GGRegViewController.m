@@ -16,7 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *phone;
 @property (weak, nonatomic) IBOutlet UITextField *passwd;
 @property (weak, nonatomic) IBOutlet UITextField *repeatpwd;
-@property (weak, nonatomic) IBOutlet UITextField *code;
+//@property (weak, nonatomic) IBOutlet UITextField *code;
 - (IBAction)reg:(id)sender;
 
 @end
@@ -57,18 +57,18 @@
         
         NSMutableDictionary *params = [NSMutableDictionary dictionary];
         params[@"email"] = self.email.text;
-        params[@"code"] = self.code.text;
+//        params[@"code"] = self.code.text;
         params[@"phone"] = self.phone.text;
         params[@"passwd"] = self.passwd.text;
         
         
         // 3.发送请求
         [mgr POST:REG_URL parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
-            NSString *checkcode=responseObject[@"checkcode"];
+//            NSString *checkcode=responseObject[@"checkcode"];
             NSString *result=responseObject[@"result"];
-            if (![checkcode isEqualToString:@"ok"]) {
-                [MBProgressHUD showError:@"验证码错误"];
-            }else if ([result isEqualToString:@"ok"]) {
+//            if (![checkcode isEqualToString:@"ok"]) {
+//                [MBProgressHUD showError:@"验证码错误"];
+            if ([result isEqualToString:@"ok"]) {
                 [MBProgressHUD showSuccess:@"用户创建成功～"];
                 [self.navigationController popViewControllerAnimated:YES];
             }else{

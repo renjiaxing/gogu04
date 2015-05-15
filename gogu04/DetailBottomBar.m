@@ -14,7 +14,7 @@
 #import "MBProgressHUD+MJ.h"
 
 @interface DetailBottomBar()
-@property (weak, nonatomic) IBOutlet UITextField *textInput;
+
 @end
 
 @implementation DetailBottomBar
@@ -54,6 +54,7 @@
 
         self.textInput.text=@"";
         [self.tableView reloadData];
+        [self.textInput resignFirstResponder];
         
         
         

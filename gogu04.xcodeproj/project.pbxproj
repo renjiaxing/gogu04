@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A52521A51AF9144D00C21FAC /* GGSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A52521A31AF9144D00C21FAC /* GGSearchViewController.m */; };
+		A52521A61AF9144D00C21FAC /* GGSearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A52521A41AF9144D00C21FAC /* GGSearchViewController.xib */; };
 		A57FBD841ADDD456009FA508 /* GGPlaceholderTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = A57FBD831ADDD456009FA508 /* GGPlaceholderTextView.m */; };
 		A57FBD8C1ADEB7D9009FA508 /* GGProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A57FBD8B1ADEB7D9009FA508 /* GGProfileTableViewController.m */; };
 		A57FBD9A1ADEC52D009FA508 /* HMCommonArrowItem.m in Sources */ = {isa = PBXBuildFile; fileRef = A57FBD8F1ADEC52D009FA508 /* HMCommonArrowItem.m */; };
@@ -132,6 +134,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A52521A21AF9144D00C21FAC /* GGSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGSearchViewController.h; sourceTree = "<group>"; };
+		A52521A31AF9144D00C21FAC /* GGSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGSearchViewController.m; sourceTree = "<group>"; };
+		A52521A41AF9144D00C21FAC /* GGSearchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GGSearchViewController.xib; sourceTree = "<group>"; };
 		A57FBD821ADDD456009FA508 /* GGPlaceholderTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGPlaceholderTextView.h; sourceTree = "<group>"; };
 		A57FBD831ADDD456009FA508 /* GGPlaceholderTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGPlaceholderTextView.m; sourceTree = "<group>"; };
 		A57FBD8A1ADEB7D9009FA508 /* GGProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGProfileTableViewController.h; sourceTree = "<group>"; };
@@ -499,6 +504,9 @@
 				A5CD96811ACAF87500E11645 /* GGHomeTableViewController.m */,
 				A5CD96831ACAF89F00E11645 /* GGSearchTableViewController.h */,
 				A5CD96841ACAF89F00E11645 /* GGSearchTableViewController.m */,
+				A52521A21AF9144D00C21FAC /* GGSearchViewController.h */,
+				A52521A31AF9144D00C21FAC /* GGSearchViewController.m */,
+				A52521A41AF9144D00C21FAC /* GGSearchViewController.xib */,
 				A5CD96861ACAF8AE00E11645 /* GGMessageTableViewController.h */,
 				A57FBDCC1AE0A952009FA508 /* GGAdviceViewController.h */,
 				A57FBDCD1AE0A952009FA508 /* GGAdviceViewController.m */,
@@ -834,6 +842,7 @@
 				A57FBDD01AE0A952009FA508 /* GGAdviceViewController.xib in Resources */,
 				A57FBDDA1AE27C19009FA508 /* GGRegViewController.xib in Resources */,
 				A5CD97261ACDA60300E11645 /* pic_add.png in Resources */,
+				A52521A61AF9144D00C21FAC /* GGSearchViewController.xib in Resources */,
 				A5CD97271ACDA60300E11645 /* reply30.png in Resources */,
 				A5CD97241ACDA60300E11645 /* ic_share_pengyouquan.png in Resources */,
 				A5CD97251ACDA60300E11645 /* ic_share_weixin.png in Resources */,
@@ -885,6 +894,7 @@
 				A5CD96BA1ACB5E8300E11645 /* AFURLSessionManager.m in Sources */,
 				A5CD967B1ACAF75200E11645 /* UIView+Extension.m in Sources */,
 				A5CD96B71ACB5E8300E11645 /* AFURLConnectionOperation.m in Sources */,
+				A52521A51AF9144D00C21FAC /* GGSearchViewController.m in Sources */,
 				A5CD96DD1ACC362F00E11645 /* NSDate+MJ.m in Sources */,
 				A5CD974D1ADD483600E11645 /* NSString+Levenshtein.m in Sources */,
 				A5CD96B31ACB5E8300E11645 /* AFHTTPRequestOperationManager.m in Sources */,

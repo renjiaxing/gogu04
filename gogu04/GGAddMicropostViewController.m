@@ -41,6 +41,9 @@
     NSString *uid=[defaults objectForKey:@"user_id"];
     NSString *token=[defaults objectForKey:@"token"];
     
+    self.stock.tag=2;
+    self.content.tag=1;
+    
     self.uid=uid;
     self.token=token;
     
@@ -50,11 +53,13 @@
     self.navigationItem.title=@"发送信息";
     self.stock.autoCompleteDataSource=self;
     self.stock.autoCompleteDelegate=self;
+    self.stock.delegate=self;
+//    self.stock.autoCompleteTableAppearsAsKeyboardAccessory=true;
     self.content.placeholder=@"请输入信息";
     self.content.placeholderColor=[UIColor whiteColor];
     self.content.textColor=[UIColor whiteColor];
     self.stockArray=[NSMutableArray array];
-    self.navigationItem.rightBarButtonItem.enabled=YES;
+    self.navigationItem.rightBarButtonItem.enabled=NO;
     
     if (self.micropost) {
         self.content.text=self.micropost.content;
@@ -66,8 +71,55 @@
     
     [self.photoBtn addTarget:self action:@selector(addPhoto) forControlEvents:UIControlEventTouchUpInside];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:self.content];
+    NSNotificationCenter *center=[NSNotificationCenter defaultCenter];
+    
+//    [center addObserver:self selector:@selector(keyBoardDidChangeFrame:) name:UIKeyboardWillChangeFrameNotification object:nil];
+    
+    [center addObserver:self selector:@selector(textDidChange) name:UITextViewTextDidChangeNotification object:self.content];
+
+
+    
 }
+
+-(void)textFieldDidBeginEditing:(UITextField *)textField
+{
+
+    [UIView animateWithDuration:0.3f animations:^{
+        self.view.transform=CGAffineTransformMakeTranslation(0, -212);
+    }];
+    
+}
+
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField
+{
+    [UIView animateWithDuration:0.3f animations:^{
+        self.view.transform=CGAffineTransformMakeTranslation(0, 0);
+    }];
+}
+
+
+//-(void) keyBoardDidChangeFrame:(NSNotification *)noti
+//{
+//    CGRect keyboardFrame=[noti.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
+//    
+//    CGFloat screenH=[[UIScreen mainScreen] bounds].size.height;
+//    
+//    CGFloat keyY=keyboardFrame.origin.y;
+//    
+//    CGFloat keyDuration=[noti.userInfo[UIKeyboardAnimationDurationUserInfoKey] floatValue];
+//    
+//    [UIView animateWithDuration:keyDuration animations:^{
+//        self.view.transform=CGAffineTransformMakeTranslation(0, keyY-screenH+40);
+//    }];
+//    
+//
+//}
 
 -(void)addPhoto
 {
@@ -88,6 +140,7 @@
     UIImagePickerController *ipc = [[UIImagePickerController alloc] init];
     ipc.sourceType = type;
     ipc.delegate = self;
+    
     [self presentViewController:ipc animated:YES completion:nil];
 }
 
@@ -109,7 +162,7 @@
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
 {
-    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 

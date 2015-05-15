@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GGForgetPwdViewController">
@@ -16,14 +15,16 @@
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入注册邮箱" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MEM-oz-ilr">
+                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="请输入注册邮箱" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MEM-oz-ilr">
                     <rect key="frame" x="8" y="112" width="584" height="30"/>
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dK-WW-RKM">
-                    <rect key="frame" x="270" y="150" width="60" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3dK-WW-RKM">
+                    <rect key="frame" x="260" y="150" width="80" height="30"/>
+                    <color key="backgroundColor" red="0.062745098040000002" green="0.2470588235" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                     <state key="normal" title="重置密码">
+                        <color key="titleColor" red="0.98987583589999995" green="0.98625758640000005" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -32,13 +33,6 @@
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstItem="MEM-oz-ilr" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailingMargin" id="KNs-G1-7BH"/>
-                <constraint firstItem="3dK-WW-RKM" firstAttribute="top" secondItem="MEM-oz-ilr" secondAttribute="bottom" constant="8" symbolic="YES" id="ToT-fY-CU5"/>
-                <constraint firstItem="MEM-oz-ilr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="hDq-EV-R1q"/>
-                <constraint firstItem="MEM-oz-ilr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="112" id="mHc-Ul-SRF"/>
-                <constraint firstItem="MEM-oz-ilr" firstAttribute="centerX" secondItem="3dK-WW-RKM" secondAttribute="centerX" id="vor-eH-Lm4"/>
-            </constraints>
         </view>
     </objects>
 </document>

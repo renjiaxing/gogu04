@@ -48,12 +48,12 @@
     /**股票*/
     CGFloat stockX=GGMicropostImage;
     CGFloat stockY=CGRectGetMaxY(self.timeF)+GGMicropostImage;
-    CGSize stockSize=[micropost.stock_name sizeWithFont:GGMicropostCellTimeFont maxW:maxW];
+    CGSize stockSize=[micropost.stock_name sizeWithFont:GGMicropostCellStockFont maxW:maxW];
     self.stockF=(CGRect){{stockX,stockY},{stockSize.width,stockSize.height}};
     
     
     /**修改*/
-    CGFloat changeX=cellW-GGMicropostCellBorderW-GGIconW-GGIconMargin;
+    CGFloat changeX=cellW-GGMicropostImage-GGIconW;
     CGFloat changeY=stockY;
     self.changeF=CGRectMake(changeX, changeY, GGIconW, GGIconW);
     
@@ -63,12 +63,12 @@
     self.delF=CGRectMake(delX, delY, GGIconW, GGIconW);
     
     /**私信*/
-    CGFloat chatX=delX=delX-GGIconW-GGIconMargin;
-    CGFloat chatY=stockY;
-    self.chatF=CGRectMake(chatX, chatY, GGIconW, GGIconW);
+//    CGFloat chatX=delX=delX-GGIconW-GGIconMargin;
+//    CGFloat chatY=stockY;
+//    self.chatF=CGRectMake(chatX, chatY, GGIconW, GGIconW);
     
     /**回复数*/
-    CGFloat messageNumX=chatX-GGIconW-GGIconMargin;
+    CGFloat messageNumX=delX-GGIconW-GGIconMargin;
     CGFloat messageNumY=stockY;
     self.messageNumF=CGRectMake(messageNumX, messageNumY, GGIconW, GGIconW);
     

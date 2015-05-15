@@ -14,14 +14,34 @@
 #import "MBProgressHUD+MJ.h"
 #import "GGHomeTableViewController.h"
 
-@interface GGSearchTableViewController () <UISearchResultsUpdating,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate>
+@interface GGSearchTableViewController () <UISearchResultsUpdating,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UITextViewDelegate>
 @property(nonatomic,strong) NSMutableArray *results;
 @property(nonatomic,strong) NSMutableArray *stockids;
-@property(nonatomic,strong) UISearchController *searchVC;
+//@property(nonatomic,strong) UISearchController *searchVC;
 @end
 
 @implementation GGSearchTableViewController
 
+//-(UISearchController *)searchVC
+//{
+//    if(_searchVC==nil){
+//        _searchVC=[[UISearchController alloc] initWithSearchResultsController:nil];
+//
+//        _searchVC.dimsBackgroundDuringPresentation=NO;
+//        
+//        [_searchVC.searchBar sizeToFit];
+//        
+//        _searchVC.searchResultsUpdater=self;
+//        
+//        _searchVC.hidesNavigationBarDuringPresentation=NO;
+//        
+//        _searchVC.searchBar.placeholder=@"搜索";
+//        
+//        [_searchVC.searchBar setValue:@"取消" forKey:@"_cancelButtonText"];
+//        
+//    }
+//    return _searchVC;
+//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -29,20 +49,20 @@
     self.results=[NSMutableArray array];
     self.stockids=[NSMutableArray array];
     
-//    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
-    
-    self.searchVC=[[UISearchController alloc] initWithSearchResultsController:nil];
-    // Uncomment the following line to preserve selection between presentations.
-//    self.clearsSelectionOnViewWillAppear = NO;
-    self.searchVC.dimsBackgroundDuringPresentation=NO;
-    [_searchVC.searchBar sizeToFit];
-    self.searchVC.searchResultsUpdater=self;
-    
-    self.searchVC.hidesNavigationBarDuringPresentation=NO;
-    
-    self.searchVC.searchBar.placeholder=@"搜索";
-    
-    [self.searchVC.searchBar setValue:@"取消" forKey:@"_cancelButtonText"];
+////    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+//    
+//    self.searchVC=[[UISearchController alloc] initWithSearchResultsController:nil];
+//    // Uncomment the following line to preserve selection between presentations.
+////    self.clearsSelectionOnViewWillAppear = NO;
+//    self.searchVC.dimsBackgroundDuringPresentation=NO;
+//    [_searchVC.searchBar sizeToFit];
+//    self.searchVC.searchResultsUpdater=self;
+//    
+//    self.searchVC.hidesNavigationBarDuringPresentation=NO;
+//    
+//    self.searchVC.searchBar.placeholder=@"搜索";
+//    
+//    [self.searchVC.searchBar setValue:@"取消" forKey:@"_cancelButtonText"];
     
 //    UIButton *btn=(UIButton *)[self.searchVC.searchBar valueForKey:@"cancelButton"];
     
@@ -63,17 +83,71 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 //    self.tableView.tableHeaderView=self.searchVC.searchBar;
-    self.navigationItem.titleView=self.searchVC.searchBar;
+//    self.navigationItem.titleView=self.searchVC.searchBar;
+    
+    UISearchBar *searchBar=[[UISearchBar alloc] initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, 40)];
+    searchBar.delegate=self;
+    self.navigationItem.titleView=searchBar;
     
 }
 
--(void)updateSearchResultsForSearchController:(UISearchController *)searchController
+- (void) searchBarSearchButtonClicked:(UISearchBar *)theSearchBar {
+    [theSearchBar resignFirstResponder];
+}
+
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar {
+    [searchBar resignFirstResponder];
+}
+
+- (void)searchBarCancelButtonClicked:(UISearchBar *)searchBar;
+{
+    [searchBar resignFirstResponder];
+}
+
+- (void)searchBarResultsListButtonClicked:(UISearchBar *)searchBar
+{
+    [searchBar resignFirstResponder];
+}
+
+//-(void)updateSearchResultsForSearchController:(UISearchController *)searchController
+//{
+//    [self.results removeAllObjects];
+//    
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    NSMutableDictionary *param=[NSMutableDictionary dictionary];
+//    param[@"code"]=searchController.searchBar.text;
+//    param[@"maxRows"]= @"10";
+//    
+//    
+//    [manager GET:CHECK_STOCK_URL parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        
+//        NSArray *stockDict=responseObject;
+//        for (NSDictionary *sto in stockDict) {
+//            Stock *stock=[Stock objectWithKeyValues:sto];
+//            
+//            NSString *stockString=[NSString stringWithFormat:@"%@,%@,%@",stock.code,stock.name,stock.shortname];
+//            NSNumber *stock_id=stock.id;
+//            [self.results addObject:stockString];
+//            [self.stockids addObject:stock_id];
+//        }
+//        [self.tableView reloadData];
+//        
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        [MBProgressHUD showError:@"网络错误，请稍候再试～"];
+//    }];
+//
+//
+//}
+
+- (void)searchBar:(UISearchBar *)searchBar textDidChange:(NSString *)searchText
 {
     [self.results removeAllObjects];
+    [self.stockids removeAllObjects];
     
     AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
     NSMutableDictionary *param=[NSMutableDictionary dictionary];
-    param[@"code"]=searchController.searchBar.text;
+    param[@"code"]=searchText;
     param[@"maxRows"]= @"10";
     
     
@@ -94,9 +168,7 @@
         [MBProgressHUD showError:@"网络错误，请稍候再试～"];
     }];
 
-
 }
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

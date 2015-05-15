@@ -8,6 +8,7 @@
 
 #import "CommentTableViewCell.h"
 
+
 @implementation CommentTableViewCell
 
 - (void)awakeFromNib {
@@ -18,6 +19,9 @@
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
+}
+- (IBAction)delComment:(id)sender {
+    NSLog(@"aaaa");
 }
 
 //-(Comment)setComment

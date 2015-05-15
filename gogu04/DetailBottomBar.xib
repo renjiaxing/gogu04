@@ -39,7 +39,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="textInput" destination="8lA-xR-92l" id="Syi-cv-0NQ"/>
+                <outlet property="textInput" destination="8lA-xR-92l" id="wOM-ln-zq7"/>
             </connections>
             <point key="canvasLocation" x="528" y="63"/>
         </view>

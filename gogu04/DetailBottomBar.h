@@ -11,6 +11,7 @@
 
 @interface DetailBottomBar : UIView
 +(instancetype)toolbar;
+@property (weak, nonatomic) IBOutlet UITextField *textInput;
 @property (weak,nonatomic) UITableView *tableView;
 @property (strong,nonatomic) NSMutableArray *commentArray;
 @property (strong,nonatomic) Micropost *micropost;

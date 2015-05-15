@@ -2,6 +2,8 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
@@ -17,8 +19,8 @@
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SXa-KE-NVF">
                         <rect key="frame" x="8" y="11" width="40" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="vXB-pz-ZlE"/>
-                            <constraint firstAttribute="height" constant="40" id="wlB-Yu-Ua7"/>
+                            <constraint firstAttribute="width" constant="40" id="23l-Xp-8es"/>
+                            <constraint firstAttribute="height" constant="40" id="Cae-UO-qXd"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uyK-M7-PUw">
@@ -28,27 +30,45 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sOM-pD-Yxk">
-                        <rect key="frame" x="61" y="34" width="251" height="18"/>
+                        <rect key="frame" x="61" y="36" width="197" height="18"/>
                         <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UKT-Y4-rSz">
+                        <rect key="frame" x="266" y="29" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="30" id="Tzl-f8-J1v"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <state key="normal" title="删除">
+                            <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                        <connections>
+                            <action selector="delComment:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="27j-Nd-dFH"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <color key="backgroundColor" red="0.062745098040000002" green="0.2470588235" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                 <constraints>
-                    <constraint firstItem="sOM-pD-Yxk" firstAttribute="trailing" secondItem="uyK-M7-PUw" secondAttribute="trailing" id="027-uO-2Y0"/>
-                    <constraint firstItem="uyK-M7-PUw" firstAttribute="leading" secondItem="SXa-KE-NVF" secondAttribute="trailing" constant="13" id="5mv-Td-0NR"/>
-                    <constraint firstItem="sOM-pD-Yxk" firstAttribute="leading" secondItem="uyK-M7-PUw" secondAttribute="leading" id="6G6-v8-93a"/>
-                    <constraint firstItem="SXa-KE-NVF" firstAttribute="top" secondItem="uyK-M7-PUw" secondAttribute="top" id="Dce-QN-8OA"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="SXa-KE-NVF" secondAttribute="bottom" constant="1" id="45U-8c-olT"/>
                     <constraint firstItem="sOM-pD-Yxk" firstAttribute="leading" secondItem="uyK-M7-PUw" secondAttribute="leading" id="DiI-BF-tAa"/>
-                    <constraint firstItem="sOM-pD-Yxk" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="EfG-Vd-st6"/>
-                    <constraint firstItem="sOM-pD-Yxk" firstAttribute="top" secondItem="uyK-M7-PUw" secondAttribute="bottom" constant="2" id="I1w-1y-lPU"/>
-                    <constraint firstItem="SXa-KE-NVF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="MEh-8X-tki"/>
+                    <constraint firstItem="SXa-KE-NVF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="FSM-xV-SOl"/>
+                    <constraint firstItem="uyK-M7-PUw" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="G4A-JK-bzk"/>
                     <constraint firstItem="sOM-pD-Yxk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="23" id="NTs-2Q-wj8"/>
-                    <constraint firstItem="SXa-KE-NVF" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="3" id="NoL-9E-gjr"/>
-                    <constraint firstItem="sOM-pD-Yxk" firstAttribute="bottom" secondItem="H2p-sc-9uM" secondAttribute="bottomMargin" id="XgK-hp-dem"/>
+                    <constraint firstItem="sOM-pD-Yxk" firstAttribute="top" secondItem="uyK-M7-PUw" secondAttribute="bottom" constant="4" id="Nyc-FM-ETN"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="UKT-Y4-rSz" secondAttribute="trailing" constant="16" id="SCg-B6-vMi"/>
+                    <constraint firstItem="UKT-Y4-rSz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="21" id="WFC-EM-5gp"/>
+                    <constraint firstItem="uyK-M7-PUw" firstAttribute="top" secondItem="SXa-KE-NVF" secondAttribute="top" id="XRp-fj-A5H"/>
+                    <constraint firstItem="uyK-M7-PUw" firstAttribute="leading" secondItem="SXa-KE-NVF" secondAttribute="trailing" constant="13" id="bM8-BL-MY0"/>
+                    <constraint firstItem="sOM-pD-Yxk" firstAttribute="leading" secondItem="uyK-M7-PUw" secondAttribute="leading" id="efZ-ss-569"/>
                     <constraint firstItem="sOM-pD-Yxk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="23" id="gW7-Cd-KUM"/>
-                    <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="SXa-KE-NVF" secondAttribute="bottom" constant="1" id="uU5-LL-0i4"/>
+                    <constraint firstItem="UKT-Y4-rSz" firstAttribute="firstBaseline" secondItem="sOM-pD-Yxk" secondAttribute="firstBaseline" id="hCc-L7-M3X"/>
+                    <constraint firstItem="UKT-Y4-rSz" firstAttribute="leading" secondItem="sOM-pD-Yxk" secondAttribute="trailing" constant="8" symbolic="YES" id="qlo-ZW-zKM"/>
+                    <constraint firstItem="UKT-Y4-rSz" firstAttribute="baseline" secondItem="sOM-pD-Yxk" secondAttribute="firstBaseline" id="tEp-i5-ybv"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="sOM-pD-Yxk" secondAttribute="bottom" constant="-2" id="yT5-3b-CY5"/>
+                    <constraint firstItem="SXa-KE-NVF" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="zBr-l0-lbt"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
@@ -63,7 +83,7 @@
                 <outlet property="commentImage" destination="SXa-KE-NVF" id="YzG-8l-F8w"/>
                 <outlet property="commentTime" destination="sOM-pD-Yxk" id="5SK-2T-fFR"/>
             </connections>
-            <point key="canvasLocation" x="561" y="190.5"/>
+            <point key="canvasLocation" x="561" y="188.5"/>
         </tableViewCell>
     </objects>
 </document>

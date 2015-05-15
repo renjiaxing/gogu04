@@ -14,6 +14,9 @@
 // 时间字体
 #define GGMicropostCellTimeFont [UIFont systemFontOfSize:12]
 
+// 股票字体
+#define GGMicropostCellStockFont [UIFont systemFontOfSize:14]
+
 // 来源字体
 #define GGMicropostCellSourceFont GGMicropostCellTimeFont
 // 正文字体

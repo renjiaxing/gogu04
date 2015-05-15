@@ -28,7 +28,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title=@"登陆";
+    self.navigationItem.title=@"股刺登陆";
     // Do any additional setup after loading the view from its nib.
 }
 

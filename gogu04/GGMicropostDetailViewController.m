@@ -20,7 +20,7 @@
 #import "UIImageView+WebCache.h"
 #import "MBProgressHUD+MJ.h"
 
-@interface GGMicropostDetailViewController () <UITableViewDataSource,UITableViewDelegate>
+@interface GGMicropostDetailViewController () <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
 @property (copy,nonatomic) NSString *user_id;
 @property (copy,nonatomic) NSString *token;
 @property (strong,nonatomic) NSMutableArray *commentArray;
@@ -33,7 +33,6 @@
 
 - (void)tapImage1:(UITapGestureRecognizer *)tap
 {
-    NSLog(@"ppppppp");
     int count = 1;
     // 1.封装图片数据
     NSMutableArray *photos = [NSMutableArray arrayWithCapacity:count];
@@ -85,7 +84,6 @@
     self.commentTableView.tableHeaderView=detailTopView;
     
     
-    
     //    UITextField *textField=[[UITextField alloc] init];
     //    textField.text=@"hjkhkjhjk";
     //    textField.textColor=[UIColor blackColor];
@@ -111,7 +109,7 @@
     self.detailBottomBar=detailBottomBar;
     detailBottomBar.tableView=commentTableView;
     
-    
+    self.detailBottomBar.textInput.delegate=self;
     
     // 4.监听键盘
     // 键盘的frame(位置)即将改变, 就会发出UIKeyboardWillChangeFrameNotification
@@ -159,6 +157,12 @@
     
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [self.view endEditing:YES];
+    return YES;
+}
+
 //-(void)clickStockButton
 //{
 //    InterestTableViewController *newVc = [[InterestTableViewController alloc] init];
@@ -188,12 +192,13 @@
     CGRect keyboardF = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     CGFloat keyboardH = keyboardF.size.height;
     self.commentTableView.frame=CGRectMake(self.commentTableView.frame.origin.x, self.commentTableView.frame.origin.y, self.commentTableView.frame.size.width, self.commentTableView.frame.size.height+keyboardH+15);
-    NSLog(@"%f,%f,%f,%f,hh:%f",self.commentTableView.frame.origin.x, self.commentTableView.frame.origin.y, self.commentTableView.frame.size.width, self.commentTableView.frame.size.height,keyboardH);
+ 
     
     // 2.动画
     [UIView animateWithDuration:duration animations:^{
+//        self.view.transform = CGAffineTransformIdentity;
         self.detailBottomBar.transform = CGAffineTransformIdentity;
-        //        self.commentTableView.transform = CGAffineTransformIdentity;
+//        self.commentTableView.transform = CGAffineTransformIdentity;
         
     }];
     
@@ -210,15 +215,16 @@
     CGRect keyboardF = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
     CGFloat keyboardH = keyboardF.size.height;
     self.commentTableView.frame=CGRectMake(self.commentTableView.frame.origin.x, self.commentTableView.frame.origin.y, self.commentTableView.frame.size.width, self.commentTableView.frame.size.height-keyboardH-15);
-    NSLog(@"%f,%f,%f,%f,hh:%f",self.commentTableView.frame.origin.x, self.commentTableView.frame.origin.y, self.commentTableView.frame.size.width, self.commentTableView.frame.size.height,keyboardH);
+
     
     // 2.动画
     [UIView animateWithDuration:duration animations:^{
         // 取出键盘高度
         CGRect keyboardF = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
         CGFloat keyboardH = keyboardF.size.height;
+//        self.view.transform = CGAffineTransformMakeTranslation(0, - keyboardH);
         self.detailBottomBar.transform = CGAffineTransformMakeTranslation(0, - keyboardH);
-        //        self.commentTableView.transform = CGAffineTransformMakeTranslation(0, - keyboardH);
+//        self.commentTableView.transform = CGAffineTransformMakeTranslation(0, - keyboardH);
         
     }];
     
@@ -256,6 +262,14 @@
     //    }
     CommentTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"CommentTableViewCell" forIndexPath:indexPath];
     Comment *comment=self.commentArray[indexPath.row];
+//    if (![comment.user_id isEqualToString:self.user_id]) {
+//        cell.commentDel.enabled=false;
+//    }else{
+//        [cell.commentDel addTarget:self action:@selector(delComment:) forControlEvents:UIControlEventTouchUpInside];
+//        [cell addSubview:cell.commentDel];
+//    }
+
+    
     int num_temp=(self.micropost.randint.intValue+comment.anonid.intValue)%100;
     [cell.commentImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%d.png",COMMENT_PIC_URL,num_temp]] placeholderImage:[UIImage imageNamed:@"avatar_default_small"]];
     cell.commentContent.text=comment.msg;
@@ -270,6 +284,11 @@
     //    [cell setNeedsDisplay];
     return cell;
 }
+
+//-(void)delComment:(id)sender
+//{
+//    NSLog(@"aaaaa");
+//}
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 //{

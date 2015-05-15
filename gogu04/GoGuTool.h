@@ -22,9 +22,9 @@
 #define HMGlobalBg HMColor(211, 211, 211)
 #define HMStatusCellMargin 10
 
-#define SERV_URL @"http://121.41.25.221"
+//#define SERV_URL @"http://121.41.25.221"
 
-//#define SERV_URL @"http://127.0.0.1:3000"
+#define SERV_URL @"http://127.0.0.1:3000"
 #define MICROPOSTS_URL [NSString stringWithFormat:@"%@/apijson/microposts_json",SERV_URL]
 #define DOWN_MICROPOSTS_URL [NSString stringWithFormat:@"%@/apijson/down_microposts_json",SERV_URL]
 #define UP_MICROPOSTS_URL [NSString stringWithFormat:@"%@/apijson/up_microposts_json",SERV_URL]

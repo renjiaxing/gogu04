@@ -140,6 +140,8 @@
     self.stockButton.titleLabel.font=GGMicropostCellTimeFont;
 
     [self.stockButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    [self.stockButton setTitleColor:[UIColor orangeColor] forState:UIControlStateHighlighted];
+    [self.stockButton setBackgroundImage:[UIImage imageNamed:@"compose_toolbar_background"] forState:UIControlStateHighlighted];
     [self.stockButton setTitle:micropost.stock_name forState:UIControlStateNormal];
     self.stockButton.userInteractionEnabled=YES;
 

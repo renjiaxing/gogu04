@@ -172,15 +172,15 @@
 //    return YES;
 //}
 
--(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
-{
-    return YES;
-}
+//-(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
+//{
+//    return YES;
+//}
 
--(void)layoutSubviews
-{
-    [super layoutSubviews];
-
-}
+//-(void)layoutSubviews
+//{
+//    [super layoutSubviews];
+//
+//}
 
 @end

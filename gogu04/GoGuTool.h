@@ -43,6 +43,17 @@
 #define CHANGE_MICROPOST_URL [NSString stringWithFormat:@"%@/apijson/change_micropost_json",SERV_URL]
 #define FORGET_PASSWORD_URL [NSString stringWithFormat:@"%@/apijson/forget_password_json",SERV_URL]
 #define REG_URL [NSString stringWithFormat:@"%@/apijson/reg_json",SERV_URL]
+#define DEL_COMMENT_URL [NSString stringWithFormat:@"%@/apijson/del_comment_json",SERV_URL]
+#define MESSAGES_URL [NSString stringWithFormat:@"%@/messages_json",SERV_URL]
+#define NEW_MESSAGE_URL [NSString stringWithFormat:@"%@/new_message_json",SERV_URL]
+#define MY_MESSAGE_URL [NSString stringWithFormat:@"%@/message_user_json",SERV_URL]
+
+#define CELLH [[UIScreen mainScreen] bounds].size.width
+#define NORMALH 44
+#define ICONW 50
+#define ICONH 50
+
+#define MESSAGETEXTFONT [UIFont systemFontOfSize:15.0f]
 
 @interface GoGuTool : NSObject
 -(BOOL)validateEmail:(NSString *)candidate;

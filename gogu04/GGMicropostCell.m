@@ -97,9 +97,9 @@
     [micropostView addSubview:msgnumLabel];
     self.msgnumLabel=msgnumLabel;
     
-//    UIButton *chatButton=[[UIButton alloc] init];
-//    [micropostView addSubview:chatButton];
-//    self.chatButton=chatButton;
+    UIButton *chatButton=[[UIButton alloc] init];
+    [micropostView addSubview:chatButton];
+    self.chatButton=chatButton;
     
     UIButton *changeButton=[[UIButton alloc] init];
     [micropostView addSubview:changeButton];
@@ -165,10 +165,10 @@
     self.msgnumLabel.frame=micropostFrame.messageNumF;
     self.msgnumLabel.text=[NSString stringWithFormat:@"%@",micropost.comment_number];
     
-//    self.chatButton.frame=micropostFrame.chatF;
-//    self.chatButton.titleLabel.text=@"chat";
-//    [self.chatButton setBackgroundImage:[UIImage imageNamed:@"sixin30"] forState:UIControlStateNormal];
-////    self.chatButton.backgroundColor=[UIColor redColor];
+    self.chatButton.frame=micropostFrame.chatF;
+    self.chatButton.titleLabel.text=@"chat";
+    [self.chatButton setBackgroundImage:[UIImage imageNamed:@"sixin30"] forState:UIControlStateNormal];
+//    self.chatButton.backgroundColor=[UIColor redColor];
 //    NSLog(@"%f,%f",self.chatButton.frame.origin.x,self.chatButton.frame.origin.y);
     
     

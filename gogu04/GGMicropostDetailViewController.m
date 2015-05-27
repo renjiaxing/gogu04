@@ -19,8 +19,10 @@
 #import "CommentTableViewCell.h"
 #import "UIImageView+WebCache.h"
 #import "MBProgressHUD+MJ.h"
+#import "GGNewMessageTableViewController.h"
+#import "GGNavigationController.h"
 
-@interface GGMicropostDetailViewController () <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate>
+@interface GGMicropostDetailViewController () <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,CommentTableCellDelegate>
 @property (copy,nonatomic) NSString *user_id;
 @property (copy,nonatomic) NSString *token;
 @property (strong,nonatomic) NSMutableArray *commentArray;
@@ -157,6 +159,11 @@
     
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [self.commentTableView reloadData];
+}
+
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     [self.view endEditing:YES];
@@ -262,18 +269,32 @@
     //    }
     CommentTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"CommentTableViewCell" forIndexPath:indexPath];
     Comment *comment=self.commentArray[indexPath.row];
-//    if (![comment.user_id isEqualToString:self.user_id]) {
-//        cell.commentDel.enabled=false;
-//    }else{
-//        [cell.commentDel addTarget:self action:@selector(delComment:) forControlEvents:UIControlEventTouchUpInside];
-//        [cell addSubview:cell.commentDel];
-//    }
+    cell.user_id=self.user_id;
+    cell.token=self.token;
+    
+//    cell.commentsAarry=self.commentArray;
+//    cell.tableview=self.commentTableView;
+    
+    cell.delegate=self;
+    
+    cell.randint=self.micropost.randint.intValue;
+    cell.comment=comment;
 
     
-    int num_temp=(self.micropost.randint.intValue+comment.anonid.intValue)%100;
-    [cell.commentImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%d.png",COMMENT_PIC_URL,num_temp]] placeholderImage:[UIImage imageNamed:@"avatar_default_small"]];
-    cell.commentContent.text=comment.msg;
-    cell.commentTime.text=comment.created_at;
+//    if (comment.user_id.intValue!=self.user_id.intValue) {
+////        cell.commentDelButton.enabled=false;
+////        [cell.commentDelButton setTitle:@"" forState:UIControlStateNormal];
+//    }else{
+//        cell.commentDelButton.enabled=true;
+////        cell.commentDelButton.titleLabel.font=[UIFont systemFontOfSize:13];
+////        [cell.commentDelButton setTitle:@"删除" forState:UIControlStateNormal];
+////        [cell.commentDelButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//        [cell.commentDelButton addTarget:self action:@selector(delComment:) forControlEvents:UIControlEventTouchUpInside];
+//    }
+    
+//    [cell addSubview:cell.commentDelButton];
+    
+
     //    cell.textLabel.text=comment.msg;
     //    cell.detailTextLabel.text=comment.created_at;
     //    int num_temp=self.micropost.randint.intValue+comment.anonid.intValue;
@@ -285,16 +306,51 @@
     return cell;
 }
 
-//-(void)delComment:(id)sender
-//{
-//    NSLog(@"aaaaa");
-//}
+-(void)clickDel:(CommentTableViewCell *)cell
+{
+    NSLog(@"clickDel");
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSMutableDictionary *param=[NSMutableDictionary dictionary];
+    param[@"uid"]=self.user_id;
+    param[@"token"]=self.token;
+    param[@"cid"]=cell.comment.id;
+    
+    [manager GET:DEL_COMMENT_URL parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSString *result=responseObject[@"result"];
+        
+        if ([result isEqualToString:@"ok"]) {
+            [self.commentArray removeObject:cell.comment];
+            [self.commentTableView reloadData];
+        }
+        
+        
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+}
+
+-(void)delComment:(id)sender
+{
+    NSLog(@"aaaaa");
+}
 
 //- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 //{
 //
 //}
 
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    GGNewMessageTableViewController *frame=[[GGNewMessageTableViewController alloc] init];
+    frame.fromuser_id=self.user_id;
+    Comment *comment=self.commentArray[indexPath.row];
+    frame.touser_id=comment.user_id;
+    GGNavigationController *nav=[[GGNavigationController alloc] initWithRootViewController:frame];
+    [self presentViewController:nav animated:YES completion:nil];
+}
 
 /*
  #pragma mark - Navigation

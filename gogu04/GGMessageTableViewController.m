@@ -14,6 +14,7 @@
 #import "HMCommonSwitchItem.h"
 #import "HMCommonLabelItem.h"
 #import "GGHomeTableViewController.h"
+#import "GGChatTableViewController.h"
 
 @interface GGMessageTableViewController ()
 @property(strong,nonatomic) NSString *user_id;
@@ -37,7 +38,7 @@
     
     [self setupGroup0];
     [self setupGroup1];
-//    [self setupGroup2];
+    [self setupGroup2];
 }
 
 -(void)setupGroup0
@@ -90,8 +91,11 @@
     [self.groups addObject:group];
     
     HMCommonArrowItem *chats = [HMCommonArrowItem itemWithTitle:@"我的私信"];
-//    changepwd.destVcClass=[GGChangePwdViewController class];
-    //    hotStatus.destVcClass = [HMOneViewController class];
+    chats.operation=^{
+        GGChatTableViewController *chatVc=[[GGChatTableViewController alloc] init];
+        [self.navigationController pushViewController:chatVc animated:YES];
+    };
+    
     
     
     group.items = @[chats];

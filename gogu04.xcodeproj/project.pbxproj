@@ -35,6 +35,18 @@
 		A57FBDD51AE27C05009FA508 /* GGForgetPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A57FBDD31AE27C05009FA508 /* GGForgetPwdViewController.xib */; };
 		A57FBDD91AE27C19009FA508 /* GGRegViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A57FBDD71AE27C19009FA508 /* GGRegViewController.m */; };
 		A57FBDDA1AE27C19009FA508 /* GGRegViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A57FBDD81AE27C19009FA508 /* GGRegViewController.xib */; };
+		A5936D0D1B0B9BFE00940D0C /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = A5936D0C1B0B9BFE00940D0C /* Message.m */; };
+		A5936D101B0B9D5100940D0C /* GGNewMessageTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5936D0F1B0B9D5100940D0C /* GGNewMessageTableViewController.m */; };
+		A5936D131B0C836900940D0C /* GGMessageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5936D121B0C836900940D0C /* GGMessageTableViewCell.m */; };
+		A5936D161B0C8DDC00940D0C /* GGMessageFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = A5936D151B0C8DDC00940D0C /* GGMessageFrame.m */; };
+		A5936D1E1B0EDF5B00940D0C /* MessageBottomBar.m in Sources */ = {isa = PBXBuildFile; fileRef = A5936D1D1B0EDF5B00940D0C /* MessageBottomBar.m */; };
+		A5936D201B0EDF8C00940D0C /* MessageBottomBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5936D1F1B0EDF8C00940D0C /* MessageBottomBar.xib */; };
+		A5936D231B10C22C00940D0C /* GGChatTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5936D221B10C22C00940D0C /* GGChatTableViewController.m */; };
+		A5936D271B10C34700940D0C /* GGChatTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A5936D251B10C34700940D0C /* GGChatTableViewCell.m */; };
+		A5936D281B10C34700940D0C /* GGChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A5936D261B10C34700940D0C /* GGChatTableViewCell.xib */; };
+		A5936D2B1B10C90600940D0C /* Mymessage.m in Sources */ = {isa = PBXBuildFile; fileRef = A5936D2A1B10C90600940D0C /* Mymessage.m */; };
+		A5936D2E1B12206300940D0C /* GGDropdownMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = A5936D2D1B12206300940D0C /* GGDropdownMenu.m */; };
+		A5936D311B12295E00940D0C /* GGTitleMenuTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5936D301B12295E00940D0C /* GGTitleMenuTableViewController.m */; };
 		A5CD964D1ACAE89C00E11645 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CD964C1ACAE89C00E11645 /* main.m */; };
 		A5CD96501ACAE89C00E11645 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A5CD964F1ACAE89C00E11645 /* AppDelegate.m */; };
 		A5CD96581ACAE89C00E11645 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5CD96571ACAE89C00E11645 /* Images.xcassets */; };
@@ -185,6 +197,28 @@
 		A57FBDD61AE27C19009FA508 /* GGRegViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGRegViewController.h; sourceTree = "<group>"; };
 		A57FBDD71AE27C19009FA508 /* GGRegViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGRegViewController.m; sourceTree = "<group>"; };
 		A57FBDD81AE27C19009FA508 /* GGRegViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GGRegViewController.xib; sourceTree = "<group>"; };
+		A5936D0B1B0B9BFE00940D0C /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		A5936D0C1B0B9BFE00940D0C /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		A5936D0E1B0B9D5100940D0C /* GGNewMessageTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGNewMessageTableViewController.h; sourceTree = "<group>"; };
+		A5936D0F1B0B9D5100940D0C /* GGNewMessageTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGNewMessageTableViewController.m; sourceTree = "<group>"; };
+		A5936D111B0C836900940D0C /* GGMessageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGMessageTableViewCell.h; sourceTree = "<group>"; };
+		A5936D121B0C836900940D0C /* GGMessageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGMessageTableViewCell.m; sourceTree = "<group>"; };
+		A5936D141B0C8DDC00940D0C /* GGMessageFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGMessageFrame.h; sourceTree = "<group>"; };
+		A5936D151B0C8DDC00940D0C /* GGMessageFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGMessageFrame.m; sourceTree = "<group>"; };
+		A5936D1C1B0EDF5B00940D0C /* MessageBottomBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageBottomBar.h; sourceTree = "<group>"; };
+		A5936D1D1B0EDF5B00940D0C /* MessageBottomBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageBottomBar.m; sourceTree = "<group>"; };
+		A5936D1F1B0EDF8C00940D0C /* MessageBottomBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageBottomBar.xib; sourceTree = "<group>"; };
+		A5936D211B10C22C00940D0C /* GGChatTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGChatTableViewController.h; sourceTree = "<group>"; };
+		A5936D221B10C22C00940D0C /* GGChatTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGChatTableViewController.m; sourceTree = "<group>"; };
+		A5936D241B10C34700940D0C /* GGChatTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGChatTableViewCell.h; sourceTree = "<group>"; };
+		A5936D251B10C34700940D0C /* GGChatTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGChatTableViewCell.m; sourceTree = "<group>"; };
+		A5936D261B10C34700940D0C /* GGChatTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GGChatTableViewCell.xib; sourceTree = "<group>"; };
+		A5936D291B10C90600940D0C /* Mymessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mymessage.h; sourceTree = "<group>"; };
+		A5936D2A1B10C90600940D0C /* Mymessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mymessage.m; sourceTree = "<group>"; };
+		A5936D2C1B12206300940D0C /* GGDropdownMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGDropdownMenu.h; sourceTree = "<group>"; };
+		A5936D2D1B12206300940D0C /* GGDropdownMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGDropdownMenu.m; sourceTree = "<group>"; };
+		A5936D2F1B12295E00940D0C /* GGTitleMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGTitleMenuTableViewController.h; sourceTree = "<group>"; };
+		A5936D301B12295E00940D0C /* GGTitleMenuTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGTitleMenuTableViewController.m; sourceTree = "<group>"; };
 		A5CD96471ACAE89C00E11645 /* gogu04.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = gogu04.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5CD964B1ACAE89C00E11645 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5CD964C1ACAE89C00E11645 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -499,6 +533,10 @@
 			isa = PBXGroup;
 			children = (
 				A57FBDA01ADEC9E9009FA508 /* HMCommonViewController.h */,
+				A5936D211B10C22C00940D0C /* GGChatTableViewController.h */,
+				A5936D221B10C22C00940D0C /* GGChatTableViewController.m */,
+				A5936D2F1B12295E00940D0C /* GGTitleMenuTableViewController.h */,
+				A5936D301B12295E00940D0C /* GGTitleMenuTableViewController.m */,
 				A57FBDA11ADEC9E9009FA508 /* HMCommonViewController.m */,
 				A5CD96801ACAF87500E11645 /* GGHomeTableViewController.h */,
 				A5CD96811ACAF87500E11645 /* GGHomeTableViewController.m */,
@@ -535,6 +573,8 @@
 				A57FBDD61AE27C19009FA508 /* GGRegViewController.h */,
 				A57FBDD71AE27C19009FA508 /* GGRegViewController.m */,
 				A57FBDD81AE27C19009FA508 /* GGRegViewController.xib */,
+				A5936D0E1B0B9D5100940D0C /* GGNewMessageTableViewController.h */,
+				A5936D0F1B0B9D5100940D0C /* GGNewMessageTableViewController.m */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -543,9 +583,19 @@
 			isa = PBXGroup;
 			children = (
 				A57FBDA31ADECC89009FA508 /* HMCommonCell.h */,
+				A5936D2C1B12206300940D0C /* GGDropdownMenu.h */,
+				A5936D2D1B12206300940D0C /* GGDropdownMenu.m */,
+				A5936D111B0C836900940D0C /* GGMessageTableViewCell.h */,
+				A5936D121B0C836900940D0C /* GGMessageTableViewCell.m */,
 				A57FBDA41ADECC89009FA508 /* HMCommonCell.m */,
 				A5CD975E1ADD4D1F00E11645 /* InsetsUILabel.h */,
 				A5CD975F1ADD4D1F00E11645 /* InsetsUILabel.m */,
+				A5936D1C1B0EDF5B00940D0C /* MessageBottomBar.h */,
+				A5936D241B10C34700940D0C /* GGChatTableViewCell.h */,
+				A5936D251B10C34700940D0C /* GGChatTableViewCell.m */,
+				A5936D261B10C34700940D0C /* GGChatTableViewCell.xib */,
+				A5936D1F1B0EDF8C00940D0C /* MessageBottomBar.xib */,
+				A5936D1D1B0EDF5B00940D0C /* MessageBottomBar.m */,
 				A5CD97531ADD4A1B00E11645 /* DetailBottomBar.h */,
 				A5CD97611ADD4EF100E11645 /* CommentTableViewCell.h */,
 				A5CD97621ADD4EF100E11645 /* CommentTableViewCell.m */,
@@ -560,6 +610,8 @@
 				A5CD96DF1ACC3A9800E11645 /* GGMicropostFrame.m */,
 				A57FBD821ADDD456009FA508 /* GGPlaceholderTextView.h */,
 				A57FBD831ADDD456009FA508 /* GGPlaceholderTextView.m */,
+				A5936D141B0C8DDC00940D0C /* GGMessageFrame.h */,
+				A5936D151B0C8DDC00940D0C /* GGMessageFrame.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -576,6 +628,10 @@
 				A5CD97671ADD4FF300E11645 /* DetailMicropost.m */,
 				A5CD96D81ACC360500E11645 /* Micropost.h */,
 				A5CD96D91ACC360500E11645 /* Micropost.m */,
+				A5936D0B1B0B9BFE00940D0C /* Message.h */,
+				A5936D0C1B0B9BFE00940D0C /* Message.m */,
+				A5936D291B10C90600940D0C /* Mymessage.h */,
+				A5936D2A1B10C90600940D0C /* Mymessage.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -831,6 +887,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A5CD97281ACDA60300E11645 /* sixin30.png in Resources */,
+				A5936D281B10C34700940D0C /* GGChatTableViewCell.xib in Resources */,
 				A5CD96961ACAFDA200E11645 /* GGLoginViewController.xib in Resources */,
 				A5CD97731ADD50E900E11645 /* MBProgressHUD.bundle in Resources */,
 				A5CD97221ACDA60300E11645 /* ic_card_like_grey.png in Resources */,
@@ -846,6 +903,7 @@
 				A5CD97271ACDA60300E11645 /* reply30.png in Resources */,
 				A5CD97241ACDA60300E11645 /* ic_share_pengyouquan.png in Resources */,
 				A5CD97251ACDA60300E11645 /* ic_share_weixin.png in Resources */,
+				A5936D201B0EDF8C00940D0C /* MessageBottomBar.xib in Resources */,
 				A5CD97201ACDA60300E11645 /* change48.png in Resources */,
 				A5CD96581ACAE89C00E11645 /* Images.xcassets in Resources */,
 				A5CD97461ADD483600E11645 /* MJPhotoBrowser.bundle in Resources */,
@@ -876,12 +934,15 @@
 				A5CD96D21ACC261200E11645 /* NSObject+MJCoding.m in Sources */,
 				A57FBD9C1ADEC52D009FA508 /* HMCommonGroup.m in Sources */,
 				A5CD97491ADD483600E11645 /* MJPhotoProgressView.m in Sources */,
+				A5936D2B1B10C90600940D0C /* Mymessage.m in Sources */,
 				A5CD96B21ACB5E8300E11645 /* AFHTTPRequestOperation.m in Sources */,
 				A5CD97711ADD50E900E11645 /* MBProgressHUD+Add.m in Sources */,
+				A5936D271B10C34700940D0C /* GGChatTableViewCell.m in Sources */,
 				A5CD97A91ADD52CF00E11645 /* MBProgressHUD+MJ.m in Sources */,
 				A5CD97481ADD483600E11645 /* MJPhotoLoadingView.m in Sources */,
 				A5CD96951ACAFDA200E11645 /* GGLoginViewController.m in Sources */,
 				A57FBDC91AE08289009FA508 /* UIScrollView+MJExtension.m in Sources */,
+				A5936D131B0C836900940D0C /* GGMessageTableViewCell.m in Sources */,
 				A5CD97471ADD483600E11645 /* MJPhotoBrowser.m in Sources */,
 				A57FBD8C1ADEB7D9009FA508 /* GGProfileTableViewController.m in Sources */,
 				A5CD972E1ADD45FB00E11645 /* GGMicropostDetailViewController.m in Sources */,
@@ -889,6 +950,7 @@
 				A5CD97741ADD50E900E11645 /* MBProgressHUD.m in Sources */,
 				A5CD96821ACAF87500E11645 /* GGHomeTableViewController.m in Sources */,
 				A5CD96D01ACC261200E11645 /* MJIvar.m in Sources */,
+				A5936D161B0C8DDC00940D0C /* GGMessageFrame.m in Sources */,
 				A5CD96DA1ACC360500E11645 /* Micropost.m in Sources */,
 				A5CD97A31ADD525200E11645 /* UIImage+MultiFormat.m in Sources */,
 				A5CD96BA1ACB5E8300E11645 /* AFURLSessionManager.m in Sources */,
@@ -898,6 +960,7 @@
 				A5CD96DD1ACC362F00E11645 /* NSDate+MJ.m in Sources */,
 				A5CD974D1ADD483600E11645 /* NSString+Levenshtein.m in Sources */,
 				A5CD96B31ACB5E8300E11645 /* AFHTTPRequestOperationManager.m in Sources */,
+				A5936D0D1B0B9BFE00940D0C /* Message.m in Sources */,
 				A5CD979A1ADD525200E11645 /* SDWebImageCompat.m in Sources */,
 				A57FBDB11AE08125009FA508 /* GGChangePwdViewController.m in Sources */,
 				A5CD968E1ACAF92000E11645 /* GGTabBarViewController.m in Sources */,
@@ -912,11 +975,13 @@
 				A57FBDC81AE08289009FA508 /* MJRefreshHeaderView.m in Sources */,
 				A5CD97721ADD50E900E11645 /* MBProgressHUD+HM.m in Sources */,
 				A5CD96B51ACB5E8300E11645 /* AFNetworkReachabilityManager.m in Sources */,
+				A5936D101B0B9D5100940D0C /* GGNewMessageTableViewController.m in Sources */,
 				A5CD979B1ADD525200E11645 /* SDWebImageDecoder.m in Sources */,
 				A57FBDA21ADEC9E9009FA508 /* HMCommonViewController.m in Sources */,
 				A5CD974C1ADD483600E11645 /* MLPAutoCompleteTextField.m in Sources */,
 				A5CD97601ADD4D1F00E11645 /* InsetsUILabel.m in Sources */,
 				A5CD97451ADD483600E11645 /* MJPhoto.m in Sources */,
+				A5936D311B12295E00940D0C /* GGTitleMenuTableViewController.m in Sources */,
 				A5CD97981ADD525200E11645 /* NSData+GIF.m in Sources */,
 				A5CD97681ADD4FF300E11645 /* DetailMicropost.m in Sources */,
 				A57FBD9F1ADEC52D009FA508 /* HMCommonSwitchItem.m in Sources */,
@@ -928,6 +993,7 @@
 				A5CD967A1ACAF75200E11645 /* UIBarButtonItem+Extension.m in Sources */,
 				A5CD96881ACAF8AE00E11645 /* GGMessageTableViewController.m in Sources */,
 				A5CD96B61ACB5E8300E11645 /* AFSecurityPolicy.m in Sources */,
+				A5936D231B10C22C00940D0C /* GGChatTableViewController.m in Sources */,
 				A5CD96501ACAE89C00E11645 /* AppDelegate.m in Sources */,
 				A57FBDA51ADECC89009FA508 /* HMCommonCell.m in Sources */,
 				A5CD97991ADD525200E11645 /* SDImageCache.m in Sources */,
@@ -957,6 +1023,8 @@
 				A57FBD841ADDD456009FA508 /* GGPlaceholderTextView.m in Sources */,
 				A5CD97971ADD525200E11645 /* MKAnnotationView+WebCache.m in Sources */,
 				A5CD979F1ADD525200E11645 /* SDWebImageManager.m in Sources */,
+				A5936D2E1B12206300940D0C /* GGDropdownMenu.m in Sources */,
+				A5936D1E1B0EDF5B00940D0C /* MessageBottomBar.m in Sources */,
 				A5CD96D41ACC261200E11645 /* NSObject+MJKeyValue.m in Sources */,
 				A5CD96741ACAF6B900E11645 /* GoGuTool.m in Sources */,
 				A5CD97A01ADD525200E11645 /* SDWebImagePrefetcher.m in Sources */,

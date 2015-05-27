@@ -7,6 +7,9 @@
 //
 
 #import "CommentTableViewCell.h"
+#import "UIImageView+WebCache.h"
+#import "GoGuTool.h"
+#import "AFNetworking.h"
 
 
 @implementation CommentTableViewCell
@@ -20,13 +23,49 @@
 
     // Configure the view for the selected state
 }
+
 - (IBAction)delComment:(id)sender {
-    NSLog(@"aaaa");
+    
+    [self.delegate clickDel:self];
+    
+//    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+//    NSMutableDictionary *param=[NSMutableDictionary dictionary];
+//    param[@"uid"]=self.user_id;
+//    param[@"token"]=self.token;
+//    param[@"cid"]=self.comment.id;
+//    
+//    [manager POST:DEL_COMMENT_URL parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
+//        
+//        NSString *result=responseObject[@"result"];
+//        
+//        if ([result isEqualToString:@"ok"]) {
+//            [self.commentsAarry removeObject:self.comment];
+//            [self.tableview reloadData];
+//        }
+//        
+//        
+//    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+//        NSLog(@"Error: %@", error);
+//    }];
+
 }
 
-//-(Comment)setComment
-//{
-//    
-//}
+-(void)setComment:(Comment *)comment
+{
+    _comment=comment;
+    int num_temp=(self.randint+comment.anonid.intValue)%100;
+    [self.commentImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%d.png",COMMENT_PIC_URL,num_temp]] placeholderImage:[UIImage imageNamed:@"avatar_default_small"]];
+    self.commentContent.text=comment.msg;
+    self.commentTime.text=comment.created_at;
+    
+    if (comment.user_id.intValue==self.user_id.intValue) {
+        self.commentDelButton.enabled=true;
+        [self.commentDelButton setTitle:@"删除" forState:UIControlStateNormal];
+
+    }else{
+        self.commentDelButton.enabled=false;
+        [self.commentDelButton setTitle:@"" forState:UIControlStateNormal];
+    }
+}
 
 @end

@@ -63,12 +63,12 @@
     self.delF=CGRectMake(delX, delY, GGIconW, GGIconW);
     
     /**私信*/
-//    CGFloat chatX=delX=delX-GGIconW-GGIconMargin;
-//    CGFloat chatY=stockY;
-//    self.chatF=CGRectMake(chatX, chatY, GGIconW, GGIconW);
+    CGFloat chatX=delX-GGIconW-GGIconMargin;
+    CGFloat chatY=stockY;
+    self.chatF=CGRectMake(chatX, chatY, GGIconW, GGIconW);
     
     /**回复数*/
-    CGFloat messageNumX=delX-GGIconW-GGIconMargin;
+    CGFloat messageNumX=chatX-GGIconW-GGIconMargin;
     CGFloat messageNumY=stockY;
     self.messageNumF=CGRectMake(messageNumX, messageNumY, GGIconW, GGIconW);
     

@@ -18,13 +18,20 @@
 #import "GGAddMicropostViewController.h"
 #import "GGNavigationController.h"
 #import "MBProgressHUD+MJ.h"
+#import "GGNewMessageTableViewController.h"
+#import "GGDropdownMenu.h"
+#import "GGTitleMenuTableViewController.h"
+#import "NSString+Extension.h"
+#import "UIView+Extension.h"
 
-@interface GGHomeTableViewController ()
+@interface GGHomeTableViewController () <GGDropdownMenuDelegate,GGtitleMenuTableViewDelegate>
 @property(strong,nonatomic) NSMutableArray *micropostsFramesArray;
 @property(strong,nonatomic) NSNumber *maxId;
 @property(strong,nonatomic) NSNumber *minId;
 @property(strong,nonatomic) NSString *user_id;
 @property(strong,nonatomic) NSString *token;
+@property(strong,nonatomic) NSString *my_stocks;
+@property(strong,nonatomic) GGDropdownMenu *menu;
 @end
 
 @implementation GGHomeTableViewController
@@ -34,7 +41,7 @@
     NSMutableArray *frames = [NSMutableArray array];
     for (NSDictionary *micropost in microposts) {
         GGMicropostFrame *f = [[GGMicropostFrame alloc] init];
-        f.micropost = [Micropost objectWithKeyValues:micropost];;
+        f.micropost = [Micropost objectWithKeyValues:micropost];
         [frames addObject:f];
     }
     return frames;
@@ -51,7 +58,21 @@
     
     self.micropostsFramesArray=[NSMutableArray array];
     
-//    self.tableView.userInteractionEnabled=NO;
+    UIButton *titleButton=[[UIButton alloc] init];
+    
+    titleButton.frame=CGRectMake(0, 0, 150, 30);
+    
+    titleButton.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
+//    titleButton.imageEdgeInsets=UIEdgeInsetsMake(0, 70, 0, 0);
+
+    
+    [titleButton setTitle:@"全部信息" forState:UIControlStateNormal];
+    [titleButton setImage:[UIImage imageNamed:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
+    [titleButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    
+    [titleButton addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
+    
+    self.navigationItem.titleView=titleButton;
     
     UIBarButtonItem *rightbutton=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addMicropost)];
     
@@ -73,6 +94,10 @@
     
     if (self.my_reply_id) {
         param[@"my_reply_id"]=self.user_id;
+    }
+    
+    if (self.my_stocks) {
+        param[@"my_stocks"]=self.my_stocks;
     }
     
     [manager GET:MICROPOSTS_URL parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -105,6 +130,96 @@
 
 }
 
+-(void)dropdownMenuDidDismiss:(GGDropdownMenu *)menu
+{
+    UIButton *titleButton=(UIButton *)self.navigationItem.titleView;
+    [titleButton setImage:[UIImage imageNamed:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
+}
+
+-(void)titleClick:(UIButton *)titleButton
+{
+    GGDropdownMenu *menu=[GGDropdownMenu menu];
+    
+    menu.delegate=self;
+    
+    GGTitleMenuTableViewController *vc=[[GGTitleMenuTableViewController alloc] init];
+    
+    vc.delegate1=self;
+    
+    vc.view.height=44*2;
+    vc.view.width=150;
+    
+    menu.contentController=vc;
+    
+    self.menu=menu;
+    
+    [menu showFrom:titleButton];
+    
+    [titleButton setImage:[UIImage imageNamed:@"navigationbar_arrow_up"] forState:UIControlStateNormal];
+}
+
+-(void)clickItem:(NSString *)item
+{
+    UIButton *titleButton=(UIButton *)self.navigationItem.titleView;
+    [self.menu dismiss];
+    [titleButton setTitle:item forState:UIControlStateNormal];
+    if ([item isEqualToString:@"全部信息"]) {
+        self.my_stocks=nil;
+    }else{
+        self.my_stocks=self.user_id;
+    }
+    
+    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
+    NSMutableDictionary *param=[NSMutableDictionary dictionary];
+    param[@"uid"]=self.user_id;
+    param[@"token"]=self.token;
+    
+    if (self.stock_id) {
+        param[@"stock_id"]=self.stock_id;
+    }
+    
+    if (self.my_id) {
+        param[@"my_id"]=self.user_id;
+    }
+    
+    if (self.my_reply_id) {
+        param[@"my_reply_id"]=self.user_id;
+    }
+    
+    if (self.my_stocks) {
+        param[@"my_stocks"]=self.my_stocks;
+    }
+    
+    [manager GET:MICROPOSTS_URL parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        
+        NSArray *micropostsDict=responseObject[@"microposts"];
+        
+        NSArray *newFrams=[self micropostFramesWithMicroposts:micropostsDict];
+        
+        [self.micropostsFramesArray removeAllObjects];
+        
+        [self.micropostsFramesArray addObjectsFromArray:newFrams];
+        
+        //        for (NSDictionary *mico in micropostsDict) {
+        //            Micropost *micropost=[Micropost objectWithKeyValues:mico];
+        //            NSLog(@"micropost:%@",micropost.content);
+        //            [self.micropostsArray addObject:micropost];
+        //        }
+        if([self.micropostsFramesArray count]!=0){
+            self.maxId=((Micropost *)(((GGMicropostFrame *)self.micropostsFramesArray[0]).micropost)).id;
+            self.minId=((Micropost *)(((GGMicropostFrame *)self.micropostsFramesArray[[self.micropostsFramesArray count]-1]).micropost)).id;
+        }
+        
+        
+        [self.tableView reloadData];
+        
+        NSLog(@"max: %@,min: %@", self.maxId,self.minId);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Error: %@", error);
+    }];
+
+}
+
 -(void)viewDidAppear:(BOOL)animated
 {
     
@@ -132,6 +247,10 @@
     
     if (self.my_reply_id) {
         param[@"my_reply_id"]=self.user_id;
+    }
+    
+    if (self.my_stocks) {
+        param[@"my_stocks"]=self.my_stocks;
     }
     
     [manager GET:MICROPOSTS_URL parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -210,6 +329,10 @@
         param[@"my_reply_id"]=self.user_id;
     }
     
+    if (self.my_stocks) {
+        param[@"my_stocks"]=self.my_stocks;
+    }
+    
     [manager GET:UP_MICROPOSTS_URL parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
         
         NSArray *micropostsDict=responseObject[@"microposts"];
@@ -258,6 +381,10 @@
     
     if (self.my_reply_id) {
         param[@"my_reply_id"]=self.user_id;
+    }
+    
+    if (self.my_stocks) {
+        param[@"my_stocks"]=self.my_stocks;
     }
     
     [manager GET:DOWN_MICROPOSTS_URL parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
@@ -321,12 +448,14 @@
     [cell.msgButton addTarget:self action:@selector(msgClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.delButton addTarget:self action:@selector(delClick:) forControlEvents:UIControlEventTouchUpInside];
     [cell.changeButton addTarget:self action:@selector(changeClick:) forControlEvents:UIControlEventTouchUpInside];
+    [cell.chatButton addTarget:self action:@selector(chatClick:) forControlEvents:UIControlEventTouchUpInside];
     
     [cell addSubview:cell.stockButton];
     [cell addSubview:cell.likeButton];
     [cell addSubview:cell.msgButton];
     [cell addSubview:cell.delButton];
     [cell addSubview:cell.changeButton];
+    [cell addSubview:cell.chatButton];
     return cell;
 }
 
@@ -440,6 +569,16 @@
     GGAddMicropostViewController *changeVC=[[GGAddMicropostViewController alloc] init];
     changeVC.micropost=cell.micropostFrame.micropost;
     GGNavigationController *nav=[[GGNavigationController alloc] initWithRootViewController:changeVC];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+-(void)chatClick:(id)sender
+{
+    GGNewMessageTableViewController *frame=[[GGNewMessageTableViewController alloc] init];
+    frame.fromuser_id=self.user_id;
+    GGMicropostCell *cell=(GGMicropostCell *)[sender superview];
+    frame.touser_id=cell.micropostFrame.micropost.user_id.stringValue;
+    GGNavigationController *nav=[[GGNavigationController alloc] initWithRootViewController:frame];
     [self presentViewController:nav animated:YES completion:nil];
 }
 //

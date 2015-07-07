@@ -16,8 +16,9 @@
 #import "MBProgressHUD+MJ.h"
 #import "GGNewMessageTableViewController.h"
 #import "GGNavigationController.h"
+#import "RKNotificationHub.h"
 
-@interface GGChatTableViewController ()
+@interface GGChatTableViewController () <UITableViewDelegate,UITableViewDataSource>
 @property(nonatomic,strong) NSMutableArray *mymessageArray;
 @property(nonatomic,copy) NSString *user_id;
 @property(nonatomic,copy) NSString *token;
@@ -36,6 +37,9 @@
     
     UINib *nib=[UINib nibWithNibName:@"GGChatTableViewCell" bundle:nil];
     [self.tableView registerNib:nib forCellReuseIdentifier:@"GGChatTableViewCell"];
+    
+    
+    self.navigationItem.title=@"我的私信";
     
 //    AFHTTPRequestOperationManager *manager = [AFHTTPRequestOperationManager manager];
 //    NSMutableDictionary *param=[NSMutableDictionary dictionary];
@@ -109,9 +113,22 @@
     return [self.mymessageArray count];
 }
 
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 60;
+}
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    GGChatTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"GGChatTableViewCell" forIndexPath:indexPath];
+    GGChatTableViewCell *cell=[tableView dequeueReusableCellWithIdentifier:@"GGChatTableViewCell"];
+    if (!cell) {
+        cell = [[GGChatTableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"GGChatTableViewCell"];
+    }
+    if (!cell.notif) {
+        cell.notif=[[RKNotificationHub alloc] initWithView:cell.chatImage];
+        [cell.notif setCircleAtFrame:CGRectMake(35,0, 8, 8)];
+        [cell.notif hideCount];
+    }
     Mymessage *message=self.mymessageArray[indexPath.row];
     NSString *msg=[NSString stringWithFormat:@"最后私信:%@",message.msg];
     cell.lastContent.text=msg;
@@ -123,6 +140,10 @@
     }else{
         num_temp=(message.anon.intValue+message.randint.intValue)%100;
     }
+    
+//    RKNotificationHub *hub=[[RKNotificationHub alloc] initWithView:cell.lastContent];
+//    
+    cell.notif.count=message.unreadnum.intValue;
     
     [cell.chatImage setImageWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@%d.png",COMMENT_PIC_URL,num_temp]] placeholderImage:[UIImage imageNamed:@"avatar_default_small"]];
     return cell;

@@ -13,6 +13,7 @@
 #import "MBProgressHUD+MJ.h"
 #import "GGRegViewController.h"
 #import "GGForgetPwdViewController.h"
+#import "XGPush.h"
 
 @interface GGLoginViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *userName;
@@ -70,6 +71,33 @@
             [defaults setObject:responseObject[@"token"] forKey:@"token"];
             [defaults setObject:self.userName.text forKey:@"username"];
             [defaults synchronize];
+            [XGPush setAccount:[NSString stringWithFormat:@"account%@",responseObject[@"user_id"]]];
+            
+            void (^successBlock)(void) = ^(void){
+                //成功之后的处理
+                NSLog(@"[XGPush]register successBlock");
+            };
+            
+            void (^errorBlock)(void) = ^(void){
+                //失败之后的处理
+                NSLog(@"[XGPush]register errorBlock");
+            };
+            
+            //注册设备
+            //    [[XGSetting getInstance] setChannel:@"appstore"];
+            //    [[XGSetting getInstance] setGameServer:@"巨神峰"];
+            
+            NSData *deviceToken=[defaults objectForKey:@"deviceToken"];
+            NSLog(@"%@",deviceToken);
+            
+            if (deviceToken!=nil) {
+                NSString * deviceTokenStr = [XGPush registerDevice:deviceToken successCallback:successBlock errorCallback:errorBlock];
+                
+                
+                NSLog(@"deviceTokenStr is %@",deviceTokenStr);
+            }
+
+            
             UIWindow *frontWindow=[[UIApplication sharedApplication] keyWindow];
             frontWindow.rootViewController=[[GGTabBarViewController alloc] init];
         }else{

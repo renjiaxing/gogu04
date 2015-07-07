@@ -45,7 +45,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.sectionFooterHeight = HMStatusCellMargin;
     self.tableView.sectionHeaderHeight = 0;
-    self.tableView.contentInset = UIEdgeInsetsMake(HMStatusCellMargin - 35, 0, 0, 0);
+    self.tableView.contentInset = UIEdgeInsetsMake(HMStatusCellMargin - 50, 0, 0, 0);
 }
 
 #pragma mark - Table view data source
@@ -67,6 +67,8 @@
     cell.item = group.items[indexPath.row];
     // 设置cell所处的行号 和 所处组的总行数
 //    [cell setIndexPath:indexPath rowsInSection:group.items.count];
+    
+    
     if ([cell.item.title isEqualToString:@"用户名"]){
         cell.selectionStyle=UITableViewCellSelectionStyleNone;
     }

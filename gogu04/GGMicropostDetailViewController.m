@@ -21,8 +21,10 @@
 #import "MBProgressHUD+MJ.h"
 #import "GGNewMessageTableViewController.h"
 #import "GGNavigationController.h"
+#import "WXApi.h"
 
-@interface GGMicropostDetailViewController () <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,CommentTableCellDelegate>
+
+@interface GGMicropostDetailViewController () <UITableViewDataSource,UITableViewDelegate,UITextFieldDelegate,CommentTableCellDelegate,DetailBottomBarDelegate,WXApiDelegate>
 @property (copy,nonatomic) NSString *user_id;
 @property (copy,nonatomic) NSString *token;
 @property (strong,nonatomic) NSMutableArray *commentArray;
@@ -56,6 +58,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    
     self.view.backgroundColor=[UIColor whiteColor];
     UITableView *commentTableView=[[UITableView alloc] init];
     CGFloat tableX=0;
@@ -80,10 +84,13 @@
     
     DetailTopView *detailTopView=[[DetailTopView alloc] init];
     detailTopView.micropost=self.micropost;
+    detailTopView.nc=self.navigationController;
 //    [detailTopView.stockButton addTarget:self action:@selector(clickStockButton) forControlEvents:UIControlEventTouchDown];
     
     
     self.commentTableView.tableHeaderView=detailTopView;
+    [self.commentTableView addSubview:(UIView *)detailTopView.contentLabel];
+//    [self.view addSubview:detailTopView.contentLabel];
     
     
     //    UITextField *textField=[[UITextField alloc] init];
@@ -107,6 +114,7 @@
     //    detailBottomBar.backgroundColor=[UIColor redColor];
     detailBottomBar.frame=CGRectMake(X, Y, W, H);
     detailBottomBar.micropost=self.micropost;
+    detailBottomBar.delegate=self;
     [self.view addSubview:detailBottomBar];
     self.detailBottomBar=detailBottomBar;
     detailBottomBar.tableView=commentTableView;
@@ -157,6 +165,49 @@
     
     
     
+}
+
+
+-(void)clickShare:(DetailBottomBar *)bar
+{
+    NSLog(@"friend");
+    WXMediaMessage *message = [WXMediaMessage message];
+    message.title = @"股刺网";
+    message.description =[NSString stringWithFormat:@"%@",bar.micropost.content];
+    [message setThumbImage:[UIImage imageNamed:@"icon"]];
+    
+    WXWebpageObject *ext = [WXWebpageObject object];
+    ext.webpageUrl = [NSString stringWithFormat:@"%@/microposts/%@/details",SERV_URL,bar.micropost.id];
+    
+    message.mediaObject = ext;
+    
+    SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
+    req.bText = NO;
+    req.message = message;
+    req.scene = WXSceneSession;
+    
+    [WXApi sendReq:req];
+}
+
+-(void)clickFriend:(DetailBottomBar *)bar
+{
+    NSLog(@"share");
+    WXMediaMessage *message = [WXMediaMessage message];
+    message.title = @"股刺网";
+    message.description =[NSString stringWithFormat:@"%@",bar.micropost.content];
+    [message setThumbImage:[UIImage imageNamed:@"icon"]];
+    
+    WXWebpageObject *ext = [WXWebpageObject object];
+    ext.webpageUrl = [NSString stringWithFormat:@"%@/microposts/%@/details",SERV_URL,bar.micropost.id];
+    
+    message.mediaObject = ext;
+    
+    SendMessageToWXReq* req = [[SendMessageToWXReq alloc] init];
+    req.bText = NO;
+    req.message = message;
+    req.scene = WXSceneTimeline;
+    
+    [WXApi sendReq:req];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -279,6 +330,7 @@
     
     cell.randint=self.micropost.randint.intValue;
     cell.comment=comment;
+    
 
     
 //    if (comment.user_id.intValue!=self.user_id.intValue) {
@@ -350,6 +402,16 @@
     frame.touser_id=comment.user_id;
     GGNavigationController *nav=[[GGNavigationController alloc] initWithRootViewController:frame];
     [self presentViewController:nav animated:YES completion:nil];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Comment *comment=self.commentArray[indexPath.row];
+    CGFloat maxW=[UIScreen mainScreen].bounds.size.width-50;
+    CGSize maxSize=CGSizeMake(maxW, MAXFLOAT);
+    CGSize contentSize=[comment.msg boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:17]} context:nil].size;
+    
+    return contentSize.height+40;
 }
 
 /*

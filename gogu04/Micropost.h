@@ -22,4 +22,5 @@
 @property (copy,nonatomic) NSString *image;
 @property (strong,nonatomic) NSNumber *stock_id;
 @property (strong,nonatomic) NSNumber *randint;
+@property (strong,nonatomic) NSString *unread;
 @end

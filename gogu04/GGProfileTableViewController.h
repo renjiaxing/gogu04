@@ -10,5 +10,4 @@
 #import "HMCommonViewController.h"
 
 @interface GGProfileTableViewController : HMCommonViewController
-
 @end

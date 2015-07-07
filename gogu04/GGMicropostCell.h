@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class GGMicropostFrame;
+@class GGMicropostFrame,RKNotificationHub;
 @interface GGMicropostCell : UITableViewCell
 @property(nonatomic,weak) UIView *micropostView;
 @property(nonatomic,weak) UILabel *contentLabel;
@@ -22,6 +22,7 @@
 @property(nonatomic,weak) UIButton *chatButton;
 @property(nonatomic,weak) UIButton *delButton;
 @property(nonatomic,weak) UIButton *changeButton;
+@property(nonatomic,strong) RKNotificationHub *notif;
 
 + (instancetype)cellWithTableView:(UITableView *)tableView;
 

@@ -15,4 +15,5 @@
 @property (copy,nonatomic) NSString *code;
 @property (copy,nonatomic) NSString *name;
 @property (copy,nonatomic) NSString *shortname;
+@property (copy,nonatomic) NSString *follow;
 @end

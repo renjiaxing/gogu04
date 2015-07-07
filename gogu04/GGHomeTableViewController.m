@@ -23,6 +23,7 @@
 #import "GGTitleMenuTableViewController.h"
 #import "NSString+Extension.h"
 #import "UIView+Extension.h"
+#import "RKNotificationHub.h"
 
 @interface GGHomeTableViewController () <GGDropdownMenuDelegate,GGtitleMenuTableViewDelegate>
 @property(strong,nonatomic) NSMutableArray *micropostsFramesArray;
@@ -58,21 +59,31 @@
     
     self.micropostsFramesArray=[NSMutableArray array];
     
-    UIButton *titleButton=[[UIButton alloc] init];
+    if (self.my_id) {
+        self.navigationItem.title=@"我的信息";
+    }else if(self.my_reply_id){
+        self.navigationItem.title=@"我的回复";
+    }else if(self.stock_id){
+        self.navigationItem.title=@"";
+    }else{
+        UIButton *titleButton=[[UIButton alloc] init];
+        
+        titleButton.frame=CGRectMake(0, 0, 150, 30);
+        
+        titleButton.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
+        //    titleButton.imageEdgeInsets=UIEdgeInsetsMake(0, 70, 0, 0);
+        
+        
+        [titleButton setTitle:@"全部信息" forState:UIControlStateNormal];
+        [titleButton setImage:[UIImage imageNamed:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
+        [titleButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        
+        [titleButton addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        self.navigationItem.titleView=titleButton;
+    }
     
-    titleButton.frame=CGRectMake(0, 0, 150, 30);
     
-    titleButton.titleEdgeInsets=UIEdgeInsetsMake(0, 10, 0, 0);
-//    titleButton.imageEdgeInsets=UIEdgeInsetsMake(0, 70, 0, 0);
-
-    
-    [titleButton setTitle:@"全部信息" forState:UIControlStateNormal];
-    [titleButton setImage:[UIImage imageNamed:@"navigationbar_arrow_down"] forState:UIControlStateNormal];
-    [titleButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    
-    [titleButton addTarget:self action:@selector(titleClick:) forControlEvents:UIControlEventTouchUpInside];
-    
-    self.navigationItem.titleView=titleButton;
     
     UIBarButtonItem *rightbutton=[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addMicropost)];
     
@@ -106,6 +117,8 @@
         
         NSArray *newFrams=[self micropostFramesWithMicroposts:micropostsDict];
         
+        [self.micropostsFramesArray removeAllObjects];
+        
         [self.micropostsFramesArray addObjectsFromArray:newFrams];
         
 //        for (NSDictionary *mico in micropostsDict) {
@@ -113,6 +126,15 @@
 //            NSLog(@"micropost:%@",micropost.content);
 //            [self.micropostsArray addObject:micropost];
 //        }
+    
+        UITabBarItem *item=(UITabBarItem *)[self.tabBarController.tabBar.items objectAtIndex:1];
+        
+        int unRead=[responseObject[@"unreadnum"] intValue]+[responseObject[@"unreadmicro"] intValue]+[responseObject[@"unreplymicro"] intValue];
+        if (unRead==0) {
+            item.badgeValue=nil;
+        }else{
+            item.badgeValue=[NSString stringWithFormat:@"%d",unRead];
+        }
         if([self.micropostsFramesArray count]!=0){
             self.maxId=((Micropost *)(((GGMicropostFrame *)self.micropostsFramesArray[0]).micropost)).id;
             self.minId=((Micropost *)(((GGMicropostFrame *)self.micropostsFramesArray[[self.micropostsFramesArray count]-1]).micropost)).id;
@@ -220,7 +242,7 @@
 
 }
 
--(void)viewDidAppear:(BOOL)animated
+-(void)viewWillAppear:(BOOL)animated
 {
     
     [self.micropostsFramesArray removeAllObjects];
@@ -259,6 +281,8 @@
         
         NSArray *newFrams=[self micropostFramesWithMicroposts:micropostsDict];
         
+        [self.micropostsFramesArray removeAllObjects];
+        
         [self.micropostsFramesArray addObjectsFromArray:newFrams];
         
         //        for (NSDictionary *mico in micropostsDict) {
@@ -266,6 +290,16 @@
         //            NSLog(@"micropost:%@",micropost.content);
         //            [self.micropostsArray addObject:micropost];
         //        }
+        
+        UITabBarItem *item=(UITabBarItem *)[self.tabBarController.tabBar.items objectAtIndex:1];
+        
+        int unRead=[responseObject[@"unreadnum"] intValue]+[responseObject[@"unreadmicro"] intValue]+[responseObject[@"unreplymicro"] intValue];
+        if (unRead==0) {
+            item.badgeValue=nil;
+        }else{
+            item.badgeValue=[NSString stringWithFormat:@"%d",unRead];
+        }
+        
         if([self.micropostsFramesArray count]!=0){
             self.maxId=((Micropost *)(((GGMicropostFrame *)self.micropostsFramesArray[0]).micropost)).id;
             self.minId=((Micropost *)(((GGMicropostFrame *)self.micropostsFramesArray[[self.micropostsFramesArray count]-1]).micropost)).id;
@@ -348,6 +382,15 @@
             self.maxId=((Micropost *)(((GGMicropostFrame *)self.micropostsFramesArray[0]).micropost)).id;
         }
         
+        UITabBarItem *item=(UITabBarItem *)[self.tabBarController.tabBar.items objectAtIndex:1];
+        
+        int unRead=[responseObject[@"unreadnum"] intValue]+[responseObject[@"unreadmicro"] intValue]+[responseObject[@"unreplymicro"] intValue];
+        if (unRead==0) {
+            item.badgeValue=nil;
+        }else{
+            item.badgeValue=[NSString stringWithFormat:@"%d",unRead];
+        }
+        
         [self.tableView reloadData];
         
         NSLog(@"max: %@,min: %@", self.maxId,self.minId);
@@ -401,6 +444,15 @@
             self.minId=((Micropost *)(((GGMicropostFrame *)self.micropostsFramesArray[[self.micropostsFramesArray count]-1]).micropost)).id;
         }
         
+        UITabBarItem *item=(UITabBarItem *)[self.tabBarController.tabBar.items objectAtIndex:1];
+        
+        int unRead=[responseObject[@"unreadnum"] intValue]+[responseObject[@"unreadmicro"] intValue]+[responseObject[@"unreplymicro"] intValue];
+        if (unRead==0) {
+            item.badgeValue=nil;
+        }else{
+            item.badgeValue=[NSString stringWithFormat:@"%d",unRead];
+        }
+        
         [self.tableView reloadData];
         
         NSLog(@"max: %@,min: %@", self.maxId,self.minId);
@@ -441,6 +493,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     GGMicropostCell *cell = [GGMicropostCell cellWithTableView:tableView];
     
+    
+    
     cell.micropostFrame=self.micropostsFramesArray[indexPath.row];
     
     [cell.stockButton addTarget:self action:@selector(stockClick:) forControlEvents:UIControlEventTouchUpInside];
@@ -456,6 +510,7 @@
     [cell addSubview:cell.delButton];
     [cell addSubview:cell.changeButton];
     [cell addSubview:cell.chatButton];
+    
     return cell;
 }
 

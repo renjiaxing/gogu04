@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface GGLoginViewController : UIViewController
-
+//@property (nonatomic,strong) NSData *deviceToken;
 @end

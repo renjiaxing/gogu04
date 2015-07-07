@@ -29,6 +29,7 @@
     
     GGMessageTableViewController *messageCenter = [[GGMessageTableViewController alloc] init];
     [self addChildVc:messageCenter title:@"消息" image:@"tabbar_message_center" selectedImage:@"tabbar_message_center_selected"];
+
     
     GGSearchTableViewController *discover = [[GGSearchTableViewController alloc] init];
     [self addChildVc:discover title:@"搜索" image:@"tabbar_discover" selectedImage:@"tabbar_discover_selected"];

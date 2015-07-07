@@ -17,6 +17,8 @@
 
 @end
 
+
+
 @implementation DetailBottomBar
 
 /*
@@ -67,11 +69,13 @@
 
 - (IBAction)weixin:(id)sender {
     NSLog(@"bbb");
+    [self.delegate clickShare:self];
 }
 
 
 - (IBAction)friend:(id)sender {
     NSLog(@"ccc");
+    [self.delegate clickFriend:self];
 }
 
 

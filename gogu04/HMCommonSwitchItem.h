@@ -9,5 +9,4 @@
 #import "HMCommonItem.h"
 
 @interface HMCommonSwitchItem : HMCommonItem
-
 @end

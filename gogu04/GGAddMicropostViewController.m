@@ -59,7 +59,7 @@
     self.content.placeholderColor=[UIColor whiteColor];
     self.content.textColor=[UIColor whiteColor];
     self.stockArray=[NSMutableArray array];
-    self.navigationItem.rightBarButtonItem.enabled=NO;
+    self.navigationItem.rightBarButtonItem.enabled=YES;
     
     if (self.micropost) {
         self.content.text=self.micropost.content;
@@ -188,10 +188,8 @@
         [MBProgressHUD showError:@"内容不能为空～"];
     }else if (self.photo) {
         [self sendWithImage];
-        [self dismissViewControllerAnimated:YES completion:nil];
     } else {
         [self sendWithoutImage];
-        [self dismissViewControllerAnimated:YES completion:nil];
     }
     // dismiss
 
@@ -212,21 +210,37 @@
         param[@"mid"]=self.micropost.id;
         [manager POST:CHANGE_MICROPOST_URL parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
-            NSLog(@"%@",responseObject);
-            [MBProgressHUD showSuccess:@"发送成功"];
+            NSString *result=responseObject[@"result"];
+            if ([result isEqualToString:@"ok"]) {
+                [MBProgressHUD showSuccess:@"发送成功"];
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
+//            NSLog(@"%@",responseObject);
+            if ([result isEqualToString:@"stocknook"]) {
+                [MBProgressHUD showSuccess:@"股票代码输入有误"];
+            }
+            
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error: %@", error);
-            [MBProgressHUD showError:@"发送失败"];
+            [MBProgressHUD showError:@"网络错误，发送失败"];
         }];
     }else{
         
         [manager POST:NEW_MICROPOST_URL parameters:param success:^(AFHTTPRequestOperation *operation, id responseObject) {
             
-            NSLog(@"%@",responseObject);
-            [MBProgressHUD showSuccess:@"发送成功"];
+            NSString *result=responseObject[@"result"];
+            if ([result isEqualToString:@"ok"]) {
+                [MBProgressHUD showSuccess:@"发送成功"];
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
+            //            NSLog(@"%@",responseObject);
+            if ([result isEqualToString:@"stocknook"]) {
+                [MBProgressHUD showSuccess:@"股票代码输入有误"];
+            }
+            
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Error: %@", error);
-            [MBProgressHUD showError:@"发送失败"];
+            [MBProgressHUD showError:@"网络错误，发送失败"];
         }];
     }
 }
@@ -259,9 +273,19 @@
             NSData *data = UIImageJPEGRepresentation(image, 1.0);
             [formData appendPartWithFileData:data name:@"micropost[image]" fileName:@"pic.jpg" mimeType:@"image/jpeg"];
         } success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
-            [MBProgressHUD showSuccess:@"发送成功"];
+            NSString *result=responseObject[@"result"];
+            if ([result isEqualToString:@"ok"]) {
+                [MBProgressHUD showSuccess:@"发送成功"];
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
+            //            NSLog(@"%@",responseObject);
+            if ([result isEqualToString:@"stocknook"]) {
+                [MBProgressHUD showSuccess:@"股票代码输入有误"];
+            }
+            
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [MBProgressHUD showError:@"发送失败"];
+            NSLog(@"Error: %@", error);
+            [MBProgressHUD showError:@"网络错误，发送失败"];
         }];
     }else{
         
@@ -271,9 +295,19 @@
             NSData *data = UIImageJPEGRepresentation(image, 1.0);
             [formData appendPartWithFileData:data name:@"micropost[image]" fileName:@"pic.jpg" mimeType:@"image/jpeg"];
         } success:^(AFHTTPRequestOperation *operation, NSDictionary *responseObject) {
-            [MBProgressHUD showSuccess:@"发送成功"];
+            NSString *result=responseObject[@"result"];
+            if ([result isEqualToString:@"ok"]) {
+                [MBProgressHUD showSuccess:@"发送成功"];
+                [self dismissViewControllerAnimated:YES completion:nil];
+            }
+            //            NSLog(@"%@",responseObject);
+            if ([result isEqualToString:@"stocknook"]) {
+                [MBProgressHUD showSuccess:@"股票代码输入有误"];
+            }
+            
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            [MBProgressHUD showError:@"发送失败"];
+            NSLog(@"Error: %@", error);
+            [MBProgressHUD showError:@"网络错误，发送失败"];
         }];
     }
 }

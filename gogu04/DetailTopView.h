@@ -10,10 +10,13 @@
 #import "Micropost.h"
 #import "InsetsUILabel.h"
 
+@class KILabel;
 @interface DetailTopView : UIView
 @property (strong,nonatomic) Micropost *micropost;
 @property (nonatomic,assign) CGRect frame;
 @property (weak,nonatomic) UIButton *stockButton;
-@property (weak,nonatomic) InsetsUILabel *contentLabel;
+//@property (weak,nonatomic) InsetsUILabel *contentLabel;
+@property (weak,nonatomic) KILabel *contentLabel;
 @property (weak,nonatomic) UIImageView *image;
+@property (strong,nonatomic) UINavigationController *nc;
 @end

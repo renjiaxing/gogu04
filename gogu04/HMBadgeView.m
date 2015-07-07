@@ -7,6 +7,8 @@
 //
 
 #import "HMBadgeView.h"
+#import "UIImage+Extension.h"
+#import "UIView+Extension.h"
 
 @implementation HMBadgeView
 

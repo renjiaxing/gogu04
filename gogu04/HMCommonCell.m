@@ -13,6 +13,8 @@
 #import "HMCommonLabelItem.h"
 #import "HMCommonCenterItem.h"
 #import "HMBadgeView.h"
+#import "UIView+Extension.h"
+#import "UIImage+Extension.h"
 
 @interface HMCommonCell()
 /**
@@ -62,13 +64,13 @@
     return _rightLabel;
 }
 
-//- (HMBadgeView *)bageView
-//{
-//    if (_bageView == nil) {
-//        self.bageView = [[HMBadgeView alloc] init];
-//    }
-//    return _bageView;
-//}
+- (HMBadgeView *)bageView
+{
+    if (_bageView == nil) {
+        self.bageView = [[HMBadgeView alloc] init];
+    }
+    return _bageView;
+}
 
 #pragma mark - 初始化
 + (instancetype)cellWithTableView:(UITableView *)tableView
@@ -78,6 +80,7 @@
     if (cell == nil) {
         cell = [[HMCommonCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:ID];
     }
+    
     return cell;
 }
 
@@ -92,9 +95,11 @@
         // 去除cell的默认背景色
 //        self.backgroundColor = [UIColor clearColor];
         
+        self.backgroundColor = [UIColor whiteColor];
+        
         // 设置背景view
-//        self.backgroundView = [[UIImageView alloc] init];
-//        self.selectedBackgroundView = [[UIImageView alloc] init];
+        self.backgroundView = [[UIImageView alloc] init];
+        self.selectedBackgroundView = [[UIImageView alloc] init];
     }
     return self;
 }
@@ -104,37 +109,38 @@
 {
     [super layoutSubviews];
     
-//    if ([self.item isKindOfClass:[HMCommonCenterItem class]]) {
-//        self.textLabel.centerX = self.width * 0.5;
-//        self.textLabel.centerY = self.height * 0.5;
-//    } else {
-//        self.textLabel.x = 10;
-    // 调整子标题的x
-//    self.detailTextLabel.x = CGRectGetMaxX(self.textLabel.frame) + 5;
-//    }
+    if ([self.item isKindOfClass:[HMCommonCenterItem class]]) {
+        self.textLabel.centerX = self.width * 0.5;
+        self.textLabel.centerY = self.height * 0.5;
+    } else {
+        self.textLabel.x = 10;
+//     调整子标题的x
+    self.detailTextLabel.x = CGRectGetMaxX(self.textLabel.frame) + 5;
+    }
 }
+
 #pragma mark - setter
-//- (void)setIndexPath:(NSIndexPath *)indexPath rowsInSection:(int)rows
-//{
-//    // 1.取出背景view
-//    UIImageView *bgView = (UIImageView *)self.backgroundView;
-//    UIImageView *selectedBgView = (UIImageView *)self.selectedBackgroundView;
-//    
-//    // 2.设置背景图片
-//    if (rows == 1) {
-//        bgView.image = [UIImage resizedImage:@"common_card_background"];
-//        selectedBgView.image = [UIImage resizedImage:@"common_card_background_highlighted"];
-//    } else if (indexPath.row == 0) { // 首行
-//        bgView.image = [UIImage resizedImage:@"common_card_top_background"];
-//        selectedBgView.image = [UIImage resizedImage:@"common_card_top_background_highlighted"];
-//    } else if (indexPath.row == rows - 1) { // 末行
-//        bgView.image = [UIImage resizedImage:@"common_card_bottom_background"];
-//        selectedBgView.image = [UIImage resizedImage:@"common_card_bottom_background_highlighted"];
-//    } else { // 中间
-//        bgView.image = [UIImage resizedImage:@"common_card_middle_background"];
-//        selectedBgView.image = [UIImage resizedImage:@"common_card_middle_background_highlighted"];
-//    }
-//}
+- (void)setIndexPath:(NSIndexPath *)indexPath rowsInSection:(int)rows
+{
+    // 1.取出背景view
+    UIImageView *bgView = (UIImageView *)self.backgroundView;
+    UIImageView *selectedBgView = (UIImageView *)self.selectedBackgroundView;
+    
+    // 2.设置背景图片
+    if (rows == 1) {
+        bgView.image = [UIImage resizedImage:@"common_card_background"];
+        selectedBgView.image = [UIImage resizedImage:@"common_card_background_highlighted"];
+    } else if (indexPath.row == 0) { // 首行
+        bgView.image = [UIImage resizedImage:@"common_card_top_background"];
+        selectedBgView.image = [UIImage resizedImage:@"common_card_top_background_highlighted"];
+    } else if (indexPath.row == rows - 1) { // 末行
+        bgView.image = [UIImage resizedImage:@"common_card_bottom_background"];
+        selectedBgView.image = [UIImage resizedImage:@"common_card_bottom_background_highlighted"];
+    } else { // 中间
+        bgView.image = [UIImage resizedImage:@"common_card_middle_background"];
+        selectedBgView.image = [UIImage resizedImage:@"common_card_middle_background_highlighted"];
+    }
+}
 
 - (void)setItem:(HMCommonItem *)item
 {
@@ -158,8 +164,10 @@
         // 设置文字
         self.rightLabel.text = labelItem.text;
         // 根据文字计算尺寸
-//        self.rightLabel.frame.size = (CGRectMake(0, 0, 100, 44)).size;
-//        self.accessoryView = self.rightLabel;
+        CGRect frame=self.rightLabel.frame;
+        frame.size=(CGRectMake(0, 0, 100, 44)).size;
+        self.rightLabel.frame=frame;
+        self.accessoryView = self.rightLabel;
     } else { // 取消右边的内容
         self.accessoryView = nil;
     }

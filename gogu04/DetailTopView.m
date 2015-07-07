@@ -12,6 +12,8 @@
 #import "UIImageView+WebCache.h"
 #import "MJPhotoBrowser.h"
 #import "MJPhoto.h"
+#import "KILabel.h"
+#import "WebViewDetailController.h"
 
 @interface DetailTopView() <UIGestureRecognizerDelegate>
 
@@ -24,13 +26,18 @@
     self = [super initWithFrame:frame];
     if (self) {
         
-        InsetsUILabel *contentLabel=[[InsetsUILabel alloc] initWithInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
+//        InsetsUILabel *contentLabel=[[InsetsUILabel alloc] initWithInsets:UIEdgeInsetsMake(10, 10, 10, 10)];
+        KILabel *contentLabel=[[KILabel alloc] init];
         contentLabel.font=[UIFont systemFontOfSize:18];
         contentLabel.numberOfLines=0;
 //        contentLabel.backgroundColor=[UIColor greenColor];
         contentLabel.textAlignment=NSTextAlignmentCenter;
         contentLabel.backgroundColor=[UIColor colorWithRed:0 green:80/255.0 blue:60/255.0 alpha:1];
         contentLabel.textColor=[UIColor whiteColor];
+        contentLabel.systemURLStyle=YES;
+        
+
+
         
         [self addSubview:contentLabel];
         self.contentLabel=contentLabel;
@@ -101,16 +108,63 @@
     CGFloat contentY=0;
     CGFloat maxW=[UIScreen mainScreen].bounds.size.width;
     CGSize maxSize=CGSizeMake(maxW, MAXFLOAT);
-    CGSize contentSize=[self.micropost.content boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:15]} context:nil].size;
+    CGSize contentSize=[self.micropost.content boundingRectWithSize:maxSize options:NSStringDrawingTruncatesLastVisibleLine | NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:[UIFont systemFontOfSize:18]} context:nil].size;
 
 //    CGSize contentSize=[self.micropost.content sizeWithFont:[UIFont systemFontOfSize:15] constrainedToSize:maxSize];
-    self.contentLabel.text=micropost.content;
+//    NSAttributedString * attrStr = [[NSAttributedString alloc] initWithData:[micropost.content dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+    //    NSString *urlPattern = @"\\b(([\\w-]+://?|www[.])[^\\s()<>]+(?:\\([\\w\\d]+\\)|([^[:punct:]\\s]|/)))";
+    NSString *urlPattern = @"((http|ftp|https)://)(([a-zA-Z0-9\\._-]+\\.[a-zA-Z]{2,6})|([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}))(:[0-9]{1,4})*(/[a-zA-Z0-9\\&%_\\./-~-]*)?";
+    
+    //<a..</a>
+    NSString *urlLink = @"<a.*</a>";
+    
+    // | 匹配多个条件,相当于or\或
+    //    NSString *pattern = [NSString stringWithFormat:@"%@|%@|%@|%@", emotionPattern, atPattern, topicPattern, urlPattern];
+    
+    NSRegularExpression *regex1 = [[NSRegularExpression alloc] initWithPattern:urlLink options:0 error:nil];
+    // 2.测试字符串
+    NSArray *results1 = [regex1 matchesInString:micropost.content options:0 range:NSMakeRange(0, micropost.content.length)];
+    
+    NSRegularExpression *regex2 = [[NSRegularExpression alloc] initWithPattern:urlPattern options:0 error:nil];
+    NSArray *results2 = [regex2 matchesInString:micropost.content options:0 range:NSMakeRange(0, micropost.content.length)];
+    
+    NSString *resultUrlAll=@"";
+    NSString *resultUrl=@"";
+    
+    // 3.遍历结果
+    for (NSTextCheckingResult *result in results1) {
+        NSLog(@"%@ %@", NSStringFromRange(result.range), [micropost.content substringWithRange:result.range]);
+        resultUrlAll=[micropost.content substringWithRange:result.range];
+    }
+    
+    for (NSTextCheckingResult *result in results2) {
+        NSLog(@"%@ %@", NSStringFromRange(result.range), [micropost.content substringWithRange:result.range]);
+        resultUrl=[micropost.content substringWithRange:result.range];
+    }
+    
+    self.contentLabel.urlLinkTapHandler= ^(KILabel *label, NSString *string, NSRange range) {
+        // Open URLs
+        //            [self attemptOpenURL:[NSURL URLWithString:string]];
+        WebViewDetailController *webVc=[[WebViewDetailController alloc] init];
+        webVc.url=string;
+        [self.nc pushViewController:webVc animated:YES];
+    };
+    
+    self.contentLabel.text=[micropost.content stringByReplacingOccurrencesOfString:resultUrlAll withString:resultUrl];
+//    self.contentLabel.text=micropost.content;
+
     if(contentSize.height<150){
         self.contentLabel.frame=CGRectMake(contentX, contentY, maxW, 150);
     }else{
         self.contentLabel.frame=CGRectMake(contentX, contentY, maxW, contentSize.height+20);
     }
     
+//    self.contentLabel.urlLinkTapHandler= ^(KILabel *label, NSString *string, NSRange range) {
+//        NSLog(@"%@",string);
+//    };
+    
+    self.contentLabel.userInteractionEnabled=YES;
+
     
     [self.stockButton setTitle:self.micropost.stock_name forState:UIControlStateNormal];
     
@@ -161,6 +215,25 @@
     
     self.frame=CGRectMake(frameX, frameY, frameW, frameH);
     
+}
+
+- (void)attemptOpenURL:(NSURL *)url
+{
+    BOOL safariCompatible = [url.scheme isEqualToString:@"http"] || [url.scheme isEqualToString:@"https"];
+    
+    if (safariCompatible && [[UIApplication sharedApplication] canOpenURL:url])
+    {
+        [[UIApplication sharedApplication] openURL:url];
+    }
+    else
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Problem"
+                                                        message:@"The selected link cannot be opened."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"Dismiss"
+                                              otherButtonTitles:nil];
+        [alert show];
+    }
 }
 //-(BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldReceiveTouch:(UITouch *)touch
 //{

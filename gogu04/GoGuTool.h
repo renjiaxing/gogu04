@@ -22,9 +22,9 @@
 #define HMGlobalBg HMColor(211, 211, 211)
 #define HMStatusCellMargin 10
 
-//#define SERV_URL @"http://121.41.25.221"
+#define SERV_URL @"http://121.41.25.221"
 
-#define SERV_URL @"http://127.0.0.1:3000"
+//#define SERV_URL @"http://127.0.0.1:3000"
 #define MICROPOSTS_URL [NSString stringWithFormat:@"%@/apijson/microposts_json",SERV_URL]
 #define DOWN_MICROPOSTS_URL [NSString stringWithFormat:@"%@/apijson/down_microposts_json",SERV_URL]
 #define UP_MICROPOSTS_URL [NSString stringWithFormat:@"%@/apijson/up_microposts_json",SERV_URL]
@@ -47,6 +47,18 @@
 #define MESSAGES_URL [NSString stringWithFormat:@"%@/messages_json",SERV_URL]
 #define NEW_MESSAGE_URL [NSString stringWithFormat:@"%@/new_message_json",SERV_URL]
 #define MY_MESSAGE_URL [NSString stringWithFormat:@"%@/message_user_json",SERV_URL]
+#define MY_STOCK_URL [NSString stringWithFormat:@"%@/apijson/mystock_json",SERV_URL]
+#define ADDSTOCK_URL [NSString stringWithFormat:@"%@/apijson/addstock_json",SERV_URL]
+#define DELSTOCK_URL [NSString stringWithFormat:@"%@/apijson/delstock_json",SERV_URL]
+#define CHECK_ALL_STOCK_URL [NSString stringWithFormat:@"%@/apijson/check_stock_json",SERV_URL]
+#define MY_PUSH_INFO_URL [NSString stringWithFormat:@"%@/apijson/my_push_info_json",SERV_URL]
+#define ACTIVE_APPLE_MICRO_PUSH_URL [NSString stringWithFormat:@"%@/apijson/active_apple_micro_push_json",SERV_URL]
+#define DEACTIVE_APPLE_MICRO_PUSH_URL [NSString stringWithFormat:@"%@/apijson/deactive_apple_micro_push_json",SERV_URL]
+#define ACTIVE_APPLE_REPLY_PUSH_URL [NSString stringWithFormat:@"%@/apijson/active_apple_reply_push_json",SERV_URL]
+#define DEACTIVE_APPLE_REPLY_PUSH_URL [NSString stringWithFormat:@"%@/apijson/deactive_apple_reply_push_json",SERV_URL]
+#define ACTIVE_APPLE_CHAT_PUSH_URL [NSString stringWithFormat:@"%@/apijson/active_apple_chat_push_json",SERV_URL]
+#define DEACTIVE_APPLE_CHAT_PUSH_URL [NSString stringWithFormat:@"%@/apijson/deactive_apple_chat_push_json",SERV_URL]
+
 
 #define CELLH [[UIScreen mainScreen] bounds].size.width
 #define NORMALH 44

@@ -1,48 +1,61 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="50" id="KGk-i7-Jjw" customClass="GGChatTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="327" height="53"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="54" id="KGk-i7-Jjw" customClass="GGChatTableViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="327" height="54"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
                 <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="dIJ-Yz-22K">
-                        <rect key="frame" x="24" y="7" width="40" height="40"/>
+                        <rect key="frame" x="13" y="7" width="40" height="40"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="40" id="j5S-SP-W5G"/>
-                            <constraint firstAttribute="height" constant="40" id="mgE-GU-kBy"/>
+                            <constraint firstAttribute="height" constant="40" id="8o3-h5-VLk"/>
+                            <constraint firstAttribute="width" constant="40" id="m2a-GD-fVX"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1DP-wb-2hO">
-                        <rect key="frame" x="72" y="17" width="247" height="21"/>
+                        <rect key="frame" x="63" y="7" width="246" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="36" id="A1u-gY-PaK"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="21"/>
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="A1u-gY-PaK"/>
+                            </mask>
+                        </variation>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="1DP-wb-2hO" firstAttribute="leading" secondItem="dIJ-Yz-22K" secondAttribute="trailing" constant="8" symbolic="YES" id="4dh-Vm-mig"/>
-                    <constraint firstItem="dIJ-Yz-22K" firstAttribute="centerY" secondItem="1DP-wb-2hO" secondAttribute="centerY" id="4gx-bU-ffs"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="dIJ-Yz-22K" secondAttribute="bottom" constant="-3" id="DFY-1W-xwo"/>
-                    <constraint firstItem="dIJ-Yz-22K" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="-1" id="OAh-ia-vEB"/>
-                    <constraint firstItem="1DP-wb-2hO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="9" id="RVR-KI-JiE"/>
-                    <constraint firstItem="dIJ-Yz-22K" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="16" id="dGd-eR-t0B"/>
-                    <constraint firstItem="1DP-wb-2hO" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="l6F-g4-6Sq"/>
+                    <constraint firstAttribute="centerY" secondItem="1DP-wb-2hO" secondAttribute="centerY" id="8tT-rO-e1C"/>
+                    <constraint firstAttribute="centerY" secondItem="dIJ-Yz-22K" secondAttribute="centerY" id="GqW-Jt-mhd"/>
+                    <constraint firstItem="dIJ-Yz-22K" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="5" id="Imi-Rn-tKP"/>
+                    <constraint firstItem="1DP-wb-2hO" firstAttribute="leading" secondItem="dIJ-Yz-22K" secondAttribute="trailing" constant="10" id="Rk9-5Z-BCQ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="1DP-wb-2hO" secondAttribute="trailing" constant="10" id="ZKu-it-yoG"/>
+                    <constraint firstItem="1DP-wb-2hO" firstAttribute="centerY" secondItem="dIJ-Yz-22K" secondAttribute="centerY" id="hNb-Ay-8MH"/>
+                    <constraint firstItem="1DP-wb-2hO" firstAttribute="height" secondItem="dIJ-Yz-22K" secondAttribute="height" id="n6h-GX-6lV"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="hNb-Ay-8MH"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="chatImage" destination="dIJ-Yz-22K" id="Wvb-0H-WfV"/>
                 <outlet property="lastContent" destination="1DP-wb-2hO" id="jvY-lD-awp"/>
             </connections>
-            <point key="canvasLocation" x="451.5" y="247.5"/>
+            <point key="canvasLocation" x="451.5" y="247"/>
         </tableViewCell>
     </objects>
 </document>

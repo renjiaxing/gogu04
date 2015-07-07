@@ -8,10 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+@class RKNotificationHub;
 @interface GGChatTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *chatImage;
 
 @property (weak, nonatomic) IBOutlet UILabel *lastContent;
+
+@property (strong,nonatomic) RKNotificationHub *notif;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "GGChatTableViewCell.h"
+#import "RKNotificationHub.h"
 
 @implementation GGChatTableViewCell
 

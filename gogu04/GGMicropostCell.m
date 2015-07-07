@@ -11,6 +11,7 @@
 #import "Micropost.h"
 #import "UIImageView+WebCache.h"
 #import "GoGuTool.h"
+#import "RKNotificationHub.h"
 
 @interface GGMicropostCell()
 @property(strong,nonatomic) NSString *user_id;
@@ -26,6 +27,14 @@
     if (!cell) {
         cell = [[GGMicropostCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:ID];
     }
+    
+    if (!cell.notif) {
+        RKNotificationHub *notif=[[RKNotificationHub alloc] initWithView:cell.msgButton];
+        [notif setCircleAtFrame:CGRectMake(15, 0, 5, 5)];
+        [notif hideCount];
+        cell.notif=notif;
+    }
+    
     return cell;
 }
 
@@ -123,7 +132,53 @@
     Micropost *micropost=micropostFrame.micropost;
     
     self.contentLabel.frame= micropostFrame.contentF;
-    self.contentLabel.text=micropost.content;
+//    NSAttributedString * attrStr = [[NSAttributedString alloc] initWithData:[micropost.content dataUsingEncoding:NSUnicodeStringEncoding] options:@{ NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType } documentAttributes:nil error:nil];
+    
+    // 表情的规则
+//    NSString *emotionPattern = @"\\[[0-9a-zA-Z\\u4e00-\\u9fa5]+\\]";
+    
+    // @的规则
+//    NSString *atPattern = @"@[0-9a-zA-Z\\u4e00-\\u9fa5]+";
+    
+    // #话题#的规则
+//    NSString *topicPattern = @"#[0-9a-zA-Z\\u4e00-\\u9fa5]+#";
+    
+    // url链接的规则
+//    NSString *urlPattern = @"\\b(([\\w-]+://?|www[.])[^\\s()<>]+(?:\\([\\w\\d]+\\)|([^[:punct:]\\s]|/)))";
+    NSString *urlPattern = @"((http|ftp|https)://)(([a-zA-Z0-9\\._-]+\\.[a-zA-Z]{2,6})|([0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}))(:[0-9]{1,4})*(/[a-zA-Z0-9\\&%_\\./-~-]*)?";
+    
+    //<a..</a>
+    NSString *urlLink = @"<a.*</a>";
+    
+    // | 匹配多个条件,相当于or\或
+//    NSString *pattern = [NSString stringWithFormat:@"%@|%@|%@|%@", emotionPattern, atPattern, topicPattern, urlPattern];
+    
+    NSRegularExpression *regex1 = [[NSRegularExpression alloc] initWithPattern:urlLink options:0 error:nil];
+    // 2.测试字符串
+    NSArray *results1 = [regex1 matchesInString:micropost.content options:0 range:NSMakeRange(0, micropost.content.length)];
+    
+    NSRegularExpression *regex2 = [[NSRegularExpression alloc] initWithPattern:urlPattern options:0 error:nil];
+    NSArray *results2 = [regex2 matchesInString:micropost.content options:0 range:NSMakeRange(0, micropost.content.length)];
+    
+    NSString *resultUrlAll=@"";
+    NSString *resultUrl=@"";
+    
+    // 3.遍历结果
+    for (NSTextCheckingResult *result in results1) {
+        NSLog(@"%@ %@", NSStringFromRange(result.range), [micropost.content substringWithRange:result.range]);
+        resultUrlAll=[micropost.content substringWithRange:result.range];
+    }
+    
+    for (NSTextCheckingResult *result in results2) {
+        NSLog(@"%@ %@", NSStringFromRange(result.range), [micropost.content substringWithRange:result.range]);
+        resultUrl=[micropost.content substringWithRange:result.range];
+    }
+    
+    self.contentLabel.text=[micropost.content stringByReplacingOccurrencesOfString:resultUrlAll withString:resultUrl];
+//    self.contentLabel.attributedText=attrStr;
+
+    
+    self.notif.count=micropost.unread.intValue;
     
     if (micropost.image) {
         self.picView.frame=micropostFrame.imageF;

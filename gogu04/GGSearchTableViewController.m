@@ -87,6 +87,7 @@
     
     UISearchBar *searchBar=[[UISearchBar alloc] initWithFrame:CGRectMake(0, 40, self.view.frame.size.width, 40)];
     searchBar.delegate=self;
+    searchBar.showsCancelButton=YES;
     self.navigationItem.titleView=searchBar;
     
 }
